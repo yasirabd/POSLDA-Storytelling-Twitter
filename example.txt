@@ -1,0 +1,42 @@
+{
+	"Ccon" : {
+		"topic 0" : {
+			"VBT" : ["bernama", "memakan", "melihat", "menghabiskan", "meningkatkan"],
+			"NN" : ["bagus", "waktu", "bisbol", "Flash", "latihan", "Pemain", "Ibuku", "brokoli"],
+			"NNP" : ["adikku"],
+			"VBI" : ["suka"]
+		},
+		"topic 1" : {
+			"NN" : ["olahraga", "penonton", "darah", "tekanan", "kesehatan", "ahli", "ketegangan"],
+			"VBT" : ["menyarankan", "memberikan", "mengemudi", "menyebabkan"],
+			"VBI" : ["meningkat", "bertanding"],
+			"JJ" : ["terkontrol"]
+		},
+		"topic 2" : {
+			"NN" : ["berkeliling", "tekanan", "penumpangnya", "sekolah", "presentasi", "saat", "tampil"],
+			"VBT" : ["merasakan", "mendapatkan"],
+			"NNP" : ["Sopir"],
+			"JJ" : ["sering", "banyak"]
+		},
+		"topic 3" : {
+			"NN" : ["pernah", "seorang", "bisbol", "pemain", "Adikku", "juara", "ibuku", "kesehatan", "Teman", "brokoli", "Brokoli"],
+			"VBI" : ["suka", "mengatakan"],
+			"VBT" : ["mengemudi", "dimakan", "makan"],
+			"NNP" : ["Profesional"],
+			"JJ" : ["baik"]
+		}
+	},
+	"Cfunc" : {
+		"IN" : ["untuk", "dari", "seperti", "agar", "di"],
+		"." : ["."],
+		"," : [","],
+		"CC" : ["tetapi", "dan"],
+		"NEG" : ["taksi", "tidak"],
+		"CDI" : ["Beberapa"],
+		"SC" : ["Saat", "yang", "bahwa"],
+		"MD" : ["dapat", "bisbol"],
+		"PRP" : ["Saya", "saya"],
+		"DT" : ["para", "itu"],
+		"RB" : ["sangat"]
+	}
+}
