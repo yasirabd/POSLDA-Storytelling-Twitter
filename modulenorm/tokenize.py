@@ -4,8 +4,14 @@ from nltk.tokenize import RegexpTokenizer
 
 class Tokenize():
     def WordTokenize(self, sentence, stopword=None, removepunct=False, splitby='space'):
-        # isi param = sentence:kalimat, stopword:listkatatdkpenting, removepunct:tandabaca, splitby:pisahberdasarkan
-        # Split kalimat kedalam kata-kata terpisah berdasar 'spasi'
+        """ Tokenize sentence into words
+        Parameters:
+            sentence - text of string
+            stopword - list of unnecessary words
+            removepunct - punctuation
+            splitby - split sentence based on
+        Returns: a list of words
+        """
         if splitby.strip().lower()=='space':
             words = re.split(r'\s',sentence)
         elif splitby.strip().lower()=='word':
@@ -31,5 +37,9 @@ class Tokenize():
         return words
 
     def CharTokenize(self,word):
-        # untuk kata
+        """ Tokenize word into characters
+        Parameters:
+            word - text of String
+        Returns: a list of characters
+        """
         return list(word)
