@@ -8,13 +8,14 @@ character = ['.',',',';',':','-,','...','?','!','(',')','[',']','{','}','<','>',
 
 class Normalize():
 
-    def remove_ascii(self, text):
-        """ Remove ASCII
+    def remove_ascii_unicode(self, text):
+        """ Remove ASCII and Unicode
         Parameters:
             text - text of string
         Returns:
         """
         text = text.encode('ascii', 'ignore').decode('utf-8')
+        text = re.sub(r'[^\x00-\x7f]',r'',text)
         return text
 
     def lower_text(self, text):

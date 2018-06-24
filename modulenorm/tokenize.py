@@ -21,9 +21,7 @@ class Tokenize():
 
         # S:jika remove punct true : hapus tanda baca
         if removepunct:
-            # Buat translation table untuk digunakan di string.translate
-            table = string.maketrans("","")
-            words = [z.translate(table,string.punctuation).strip() for z in words]
+            words = [z.translate(str.maketrans("","", string.punctuation)).strip() for z in words]
             # E:jika remove punct true : hapus tanda baca
 
             # Hapus seluruh empty char pada list
