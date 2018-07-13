@@ -1,0 +1,414 @@
+masalah pertama adalah masalah kerahasiaan pesan 
+tcp dan ip adalah dua buah protokol yang berbeda
+bab ini membahas studi perbandingan antara berbagai spi yang ada       
+hal ini memang diperkenankan oleh sebagian besar lembaga pengelola kartu kredit
+setelah itu , penulis melakukan perbandingan terhadap 9 spi yang ada
+pada tabel 5.2 terlihat hasil komparasi antar-spi 
+kupon tersebut kemudian diedarkan
+ada banyak cara mengedarkannya
+hal ini bisa dilakukan dengan menggunakan surat elektronik atau browser
+penggunaan pem dengan fasilitas sertifikat dapat mencegah serangan man-in-the-middle
+;---10---
+pencatatan dan pemberian nomor seri pada kupon dapat mencegah pembelanjaan ganda
+hal ini akan membuat pemakaian kupon terlacak
+jadi , kasusnya mirip sekali dengan uang yang diedarkan oleh bank sentral
+tanpa perangkat lunak khusus ,  pencatatan hanya dilakukan di web server pedagang saja
+masalah penjualan kupon itu berada di luar cakupan masalah kupon elektronik
+pada prototip awal cybertrade ini , konsumen cukup menggunakan browser biasa
+konsumen tidak membutuhkan browser dengan kemampuan enkripsi
+pedagang juga dapat menggunakan web server biasa
+program tersebut kemudian menghasilkan sebuah slip pembayaran
+setelah itu , cybertrade payment server akan menampilkan hasil otorisasi pada browser
+;---20---
+kelemahan yang dimiliki oleh protokol tcp/ip dan http dimiliki pula oleh cybertrade
+hal ini dapat meningkatkan kehandalan sistem
+payment server melakukan proses otentikasi terhadap apu itu
+setelah diotorisasi ,  konsumen akan disodori digital receipt
+pada implementasi awal ,  open market menggunakan fasilitas keamanan shttp
+skenario transaksi open market menggunakan enkripsi simetris dan asimetris
+pedagang menyimpan kunci privat pada web server-nya
+lagi pula dalam apu itu , tidak ada data mengenai konsumen
+csp mencatat seluruh transaksi , data konsumen dan data pengiriman
+konsumen tetap anonim dari sudut pandang pedagang
+;---30---
+pedagang harus mendaftarkan diri kepada csp untuk bisa menggunakan skenario spi ini
+biaya pendaftaran pedagang kepada open market adalah 10 us$
+wallet tersebut nanti akan dijalankan oleh browser saat konsumen melakukan transaksi
+wallet itu harus diisi kartu kredit dulu
+konsumen memilih barang yang akan dibelinya di homepage pedagang
+wallet kemudian akan mengirim informasi pembayaran kepada pedagang
+konsumen menerima barang kirimannya
+informasi kartu kredit tersebut tentunya dienkripsi dengan password
+hal ini cukup hanya dilakukan satu kali
+konsumen kemudian harus memilih kartu kredit mana yang akan dipergunakannya
+;---40---
+jika setuju , konsumen menekan tombol pembayaran [pay]
+wallet kemudian akan mengirim informasi pembayaran kepada pedagang
+jadi , cybercoins termasuk dalam alat pembayaran dengan sistem pre-paid
+dari sudut pandang hukum dagang , skenario first virtual cukup unik 
+konsumen tidak memerlukan perangkat lunak yang khusus
+konsumen harus mendaftarkan diri kepada first virtual terlebih dahulu
+pendaftaran ini cukup dilakukan satu kali saja
+setelah mendaftar ,  konsumen dapat berbelanja di toko elektronik pedagang
+virtualpin itu segera dikirim kepada pedagang
+virtualpin sebenarnya adalah salah satu bentuk dari shadow account
+;---50---
+kalaupun ternyata terjadi penipuan , shadow account itu dideaktifkan
+first virtual tidak menyediakan sarana pencatatan untuk konsumennya
+netchex menjadi perpanjangan tangan dari rekening bank konsumen yang sudah ada
+proses kliring tetap dilakukan secara konvensional
+pedagang tidak memerlukan perangkat lunak khusus
+konsumen men-download perangkat lunak netchex
+netchex akan memberikan jawaban konfirmasi dalam waktu 24 jam
+jika disetujui ,  konsumen akan ditelpon oleh netchex
+konsumen diberi shadow account oleh netchex
+cek elektronik itu dikirim kepada netchex authentication server
+;---60---
+netchex memeriksa keabsahan cek elektronik yang dikirim konsumen
+netchex tergolong sistem pembayaran debit
+rekening bank pedagang baru dapat dikredit setelah proses kliring itu selesai
+fasilitas keamanan yang ditawarkan oleh netchex di internet terbilang cukup canggih
+mungkin selanjutnya , sistem dapat dikembangkan untuk telebanking
+uang elektronik ini dapat dibeli dari bank tertentu yang menerbitkannya
+digicash membaptis uang elektroniknya dengan nama ' ecash '
+konsumen harus mengambil ecash dari bank terlebih dahulu
+koin elektronik itu akan di-download ke dalam hard disk komputer konsumen
+setiap koin memiliki nilai tertentu
+;---70---
+setelah berbelanja di toko pedagang ,  konsumen akan ditagih oleh pedagang
+koin itu kemudian diambil dan dihapus dari hard disk konsumen
+lantas , bank dapat mengkredit rekening bank milik pedagang
+ecash amat cocok digunakan dalam transaksi micropayments
+pedagang juga tidak bisa menggandakan uang yang hendak diotorisasi tanpa ketahuan
+di sisi konsumen ,  pencatatan dilakukan oleh perangkat lunak wallet
+tentunya , transaksi dengan protokol set ini terlacak
+protokol set tidak cocok untuk transaksi micropayments
+inti dari keamanan dalam protokol set adalah penggunaan sertifikat digital
+kunci sepanjang ini sulit dipecahkan dengan brute-force-attack
+;---80---
+spesifikasi set tidak menjelaskan mengenai biaya tambahan atas transaksi
+suatu pilot project set telah berhasil dilakukan di jepang pada awal tahun 1997
+ibm kini juga mengembangkan protokol set menjadi superset 
+penggunaan sertifikat digital memang membuat transaksi di internet lebih aman
+protokol lapisan atas cek bilyet digital sebagai alat pembayaran
+cek yang datang di rumah kliring tidak harus selalu dalam bentuk kertas
+pertama-tama , akan digambarkan alur transaksi pada lapisan atas secara umum
+cek bilyet digital dalam tugas akhir ini adalah alat pembayaran peer-to-peer
+dalam kasus ini , transaksi dapat dikategorikan dalam transaksi off-line
+integritas data transaksi dijamin dengan menggunakan fungsi hash satu arah
+;---90---
+nasabah 1 langsung tahu bahwa lawan bicaranya bukanlah nasabah 2
+penyerang tentunya dapat merekam seluruh pertukaran pesan
+namun tentunya , pemberi cek akan melihat nomor rekening sang penerima cek
+protokol cek bilyet digital ini membuka lembaran baru dalam dunia perbankan 
+di universitas indonesia telah dikembangkan sistem pengenal huruf tulisan tangan yang terdiri atas sub-sistem prapengolahan , sub-sistem ekstraksi ciri dan sub-sistem klasifikasi   
+pada makalah ini dijelaskan penggunaan logika fuzzy untuk mendapatkan representasi huruf dari bentuk tulisan tangan pada sub-sistem ekstraksi ciri dan penggunaan jaringan syaraf buatan propagasi balik pada sub-sistem klasifikasi sedangkan proses penghalusan dan penipisan data pada sub-sistem pra-pengolahan dilakukan dengan menggunakan algoritma klasik   
+penggunaan logika fuzzy untuk mendapatkan representasi huruf dari bentuk tulisan tangan pada sub-sistem ekstraksi ciri dan penggunaan jaringan syaraf buatan propagasi balik pada sub-sistem klasifikasi dijelaskan pada makalah ini sedangkan proses penghalusan dan penipisan data pada sub-sistem pra-pengolahan dilakukan dengan menggunakan algoritma klasik   
+eksperimen dilakukan dengan mengujikan data yang dilatihkan dan tidak dilatihkan   
+pada data yang dilatihkan , sistem mempunyai akurasi pengenalan sampai dengan 97.69 % sementara pada data yang tidak dilatihkan , akurasi pengenalan yang dicapai adalah 84.6 %  
+penelitian mengenai pengenalan huruf tulisan tangan terus dikembangkan   
+;---100---
+
+metode yang digunakan dalam penelitian pengenalan huruf tulisan tangan pada umumnya menggunakan metode pencocokan citra dan pendekatan statistik
+untuk meningkatkan kemampuan sistem dalam mengenali data yang belum pernah dilatihkan pada penelitian selanjutnya , jaringan syaraf tiruan yang digunakan akan dimodifikasi sehingga mempunyai generalisasi yang lebih baik  
+sementara untuk huruf yang belum dilatihkan , sistem menunjukkan tingkat pengenalan yang cukup baik , yaitu mencapai 84.62 %  
+pada makalah ini disajikan metode pengenalan dengan menggunakan logika fuzzy yang menganggap huruf tulisan tangan sebagai sebuah graf berarah , dimana nodenya terdiri atas titik ujung dan titik cabang  
+sementara , edgenya dapat berupa garis lurus , kurva dan loop   
+dalam intuisi manusia , segmen garis tersebut dapat diklasifikasikan secara fuzzy ke dalam suatu tipe garis , kurva dan loop sedemikian sehingga ciri huruf tersebut dapat dikenali  
+sedangkan , untuk proses klasifikasi digunakan jaringan syaraf buatan propagasi balik   
+jaringan syaraf buatan adalah salah satu metode komputasi yang berusaha meniru cara kerja sistem syaraf otak manusia  
+hal ini dimungkinkan karena pengetahuan yang ada pada jaringan syaraf buatan tidak diprogram , namun dilatih berdasarkan informasi yang diterimanya  
+suatu fungsi khusus dapat dibuat untuk mendeskripsikan huruf tulisan tangan
+;---110---
+hasil eksperimen menunjukkan bahwa sistem mempunyai akurasi yang sangat tinggi untuk mengenali huruf yang telah dilatihkan   
+fungsi ini disebut sebagai fungsi deskripsi   
+contoh dapat dilihat pada gambar 2  
+huruf tulisan tangan pada gambar 2(a) dan 2(b) memiliki fungsi deskripsi yang sama , walau bentuk tulisannya tidak tepat sama   
+fungsinya adalah : f(ma) = f(mb) = v(1,2).n(2,3).p(3,4).v(4,5)   
+fungsi deskripsi ini juga dapat dipakai untuk membedakan suatu huruf yang sama dengan bentuk yang berbeda-beda   
+huruf m pada gambar 2(c) dan 2(d) memiliki fungsi deskripsi yang berbeda dengan 2 huruf m sebelumnya
+fungsi deskripsi dari huruf m pada gambar 2.4 (c) dan 2.4 (d) adalah : f(mc) = p(1,2).u(2,3).n(3,4) dan f(md) = v(1,2).u(2,3).v(3,4)  
+3 jenis fungsi deskripsi dari huruf m ini dapat digabung dengan menggunakan operator logika atau yang disimbolkan dengan karakter ' + ' , menjadi : f(m) = f(ma) + f(mb) + f(mc) + f(md) = v(1,2).n(2,3).p(3,4).v(4,5) + p(1,2).u(2,3).n(3,4) + v(1,2).u(2,3).v(3,4) 
+eksperimen dilakukan dengan mengujikan sistem untuk mengenali huruf besar dan kecil
+;---120---
+di sini dijelaskan penggunaan logika fuzzy untuk menentukan jenis loop , garis dan kurva seperti yang terdapat pada gambar 1  
+klasifikasi loop dilakukan dengan pengukuran berdasarkan sudut kemiringan garis dari titik pusat dan titik penting loop tersebut
+sudut kemiringan dicari dengan menggunakan persamaan q = tan-1 m dengan m adalah gradien dari garis tersebut   
+dengan menggunakan sudut kemiringan dan fungsi keanggotaan sekarang dapat ditentukan jenis dari loop yang ada   
+jenis dari loop yang ada  dapat ditentukan dengan menggunakan sudut kemiringan dan fungsi keanggotaan sekarang 
+jenis garis diklasifikasikan ke salah satu himpunan h , v , p atau n dengan tingkat keanggotaan tertinggi
+klasifikasi jenis kurva dilakukan dengan mendeteksi jenis garis yang menghubungkan titik awal dan titik akhir dari kurva   
+kerangka huruf yang dihasilkan dalam bentuk kumpulan elemen dasar , loop , garis atau kurva dan posisi relatif antar elemen harus disimpan dalam bentuk yang bisa dikenali oleh jaringan syaraf tiruan  
+elemen loop , garis dan kurva diubah bentuknya ke dalam 7 bit dan masing-masing jenis elemen akan diinterpretasikan secara unik  
+hubungan antar elemen akan diinterpretasikan dengan menggunakan matriks interrelationship  
+;---130---
+jaringan syaraf tiruan merupakan suatu metode pengenalan pola dengan ketelitian tinggi  
+selain itu , jst mampu mengenali variasi masukan dengan mengenali pola-pola tertentu dari masukan untuk itu jst memerlukan tahapan pelatihan dimana pada saat ini , jaringan akan mencoba membuat fungsi kelakuan berdasarkan masukan yang dilatihkan  
+dalam penelitian ini digunakan jaringan syaraf buatan propagasi balik standar yang dikombinasikan dengan fungsi kesalahan kuadratis yang terdiri atas 520 node pada lapis masukan , sebuah lapis tersembunyi dan lapis keluaran yang mempunyai 26 node untuk merepresentasikan 26 huruf alfabet  
+huruf tulisan tangan yang dilatihkan adalah hasil tulisan dari 3 orang sukarelawan dengan memberikan masing-masing 5 contoh untuk huruf yang besar dan 5 contoh untuk huruf yang kecil
+contoh huruf tulisan tangan ini dapat dilihat pada gambar 4 dan gambar 5   
+sedangkan , huruf tulisan tangan yang tidak dilatih dan digunakan dalam pengujian sistem ini adalah sebanyak 1 kumpulan huruf besar dan 1 kumpulan huruf kecil untuk masing-masing sukarelawan  
+hasil eksperimen pengujian huruf besar menunjukkan bahwa  kemampuan untuk pengenalan mencapai 96.54 % pada data yang dilatihkan sementara untuk data yang tidak dilatihkan , kemampuan pengenalan mencapai 76.92 %
+sedangkan , eksperimen dengan huruf kecil menunjukkan bahwa pengenalan sistem untuk data yang dilatihkan mencapai 97.69 % dan 84.62 % untuk data yang tidak dilatihkan
+untuk mengatasi hal ini pada penelitian selanjutnya , jaringan syaraf tiruan yang digunakan akan dimodifikasi hingga mempunyai kemampuan generalisasi yang lebih baik sehingga diharapkan hasil akurasi pengenalan huruf tulisan tangan yang tidak dilatihkan menjadi lebih baik lagi  
+ladang gas alam natuna dengan kandungan co2 mencapai 70 % dari total cadangan gas sebesar 210 tscf akan memerlukan penanganan khusus
+;---140---
+dalam tulisan ini dilaporkan alternatif proses produksi skala komersial metanol dari co2-natuna dengan metoda hydrogenasi dan reformasi
+pembahasan difokuskan pada tinjauan termodinamika , kesetimbangan massa dan energi dari setiap proses reaksi yang dipilih
+aspek ekonomi dan prospek pasar dari produk metanol yang dihasilkan juga dibahas
+energi fosil , tenaga surya dan nuklir dari dalam bentuk panas dan listrik dipertimbangkan akan sangat efisien dalam memasok kebutuhan energi untuk proses kimia
+revolusi industri telah menyebabkan peningkatan jumlah co2 di atmosfir
+setiap tahun , lebih dari 1,8 x 1010 ton co2 dibuang ke atmosfir melalui aktivitas manusia
+makalah ini dimaksudkan untuk memberikan alternatif proses produksi komersial metanol dari co2 natuna guna dapat memperoleh manfaat yang sebesar-besarnya dari ladang gas alam raksasa tersebut
+proses metan konversi co2 adalah gabungan dari proses pemisahan dan konversi co2 menjadi metanol dengan penambahan hidrogen
+jumlah maksimal metanol yang dihasilkan dari proses ini adalah 66 % dari total kandungan gas alam natuna
+produksi massal metanol adalah istilah yang dipopulerkan oleh barnert[6] untuk memberikan perhatian khusus pada proyek natuna
+;---150---
+proses ini adalah gabungan dari proses reformasi dan hidrogenasi co2
+campuran syngas dan co2 sisa dialirkan ke konverter metanol bersama-sama dengan hidrogen dari instalasi elektrolisa
+jumlah maksimal metanol yang dapat dihasilkan dari proses ini mencapai 91 % dari total kandungan gas alam natuna dengan perincian 25 % rasio ch4 dan 66 % rasio co2
+tabel 8 memperlihatkan perkiraan umum keuntungan dari proses konversi co2-natuna
+kedua proses yang diusulkan sama-sama memberikan nilai tambah
+tabel 9 adalah prospek pasar dari produk konversi gas alam natuna
+kondisi-kondisi ini menjanjikan prospek yang cerah untuk memproduksi metanol secara besar-besaran dari natuna 
+kedua proses komersialisasi metanol yang diusulkan kelihatannya dapat memberikan prospek yang cerah untuk direalisasikan di masa mendatang
+digital subscriber line adalah teknologi akses dengan perangkat khusus pada central office dan pelanggan yang memungkinkan transmisi broadband melalui kabel tembaga , teknologi ini sering disebut juga dengan istilah teknologi suntikan atau injection technology 
+sehingga , kabel telepon biasa yang telah ada dapat dipakai untuk menghantarkan data dalam jumlah yang besar dan dengan kecepatan yang tinggi  
+;---160---
+telepon hanya menggunakan sebagian frekwensi yang mampu dihantarkan oleh kabel tembaga 
+jarak pemakai ke co menentukan kecepatan dsl
+jenis dsl yang digunakan tergantung dari kebutuhan pelanggan serta layanan yang dapat disediakan di daerahnya
+dsl memberikan banyak keuntungan  
+selain itu , dsl adalah layanan langsung yang selalu terhubung dengan isp dan tidak membayar per menit  
+masalah yang ada antara lain keterbatasan jarak jangkauan , pelayanan serta dukungan teknis purna jual yang kurang baik untuk pelanggan
+yang pertama adalah panjang kabel tembaga dari co ke pelanggan  
+yang kedua adalah adanya load coils dan bridged taps
+local exchange carriers menggunakan load coil untuk memberikan layanan telepon di daerah-daerah yang memerlukan peralatan tambahan atau instalasi loop tembaga
+load coil adalah peralatan induksi yang menggeser frekwensi pembawa suara ke atas
+;---170---
+ini adalah kompensasi untuk kapasitansi kabel khususnya untuk jangkauan lebih dari 18.000 feet
+sayangnya , frekwensi suara tergeser ke frekwensi yang biasa digunakan untuk dsl sehingga mengakibatkan interferensi yang tidak dapat ditolerir
+sehingga , metoda ini membuat jalur tersebut tidak cocok untuk adsl  
+bridged tap adalah bagian kabel yang tidak berada pada jalur yang langsung dari pelanggan ke co
+bridged tap ini memudahkan lec untuk menyediakan loop tembaga tanpa membuat jalur yang baru sepanjang jarak pelanggan ke co  
+namun , gema dan noise tambahan yang ditimbulkan karena adanya bridged tap dapat membuat dsl tidak dapat dipertahankan 
+hambatan ketiga adalah serat optik  
+dsl adalah layanan digital yang dibuat untuk dibawa dengan saluran analog yaitu kabel tembaga  
+oleh karena itu , sinyal tidak dapat dikirim melalui media yang menggunakan transmisi digital seperti serat optik  
+biasanya , serat optik digunakan untuk digital loop carrier atau subscriber loop carrier  
+;---180---
+daerah yang menggunakan serat optik ini tidak dapat dilayani dsl 
+layanan dsl disediakan oleh lebih dari satu perusahaan sehingga kurang efisien  
+pelanggan memesan layanan dsl melalui isp yang akan meneruskannya ke lec untuk kelengkapannya
+penundaan seringkali disebabkan oleh sistem kualifikasi telco
+telco memperbarui lqd setiap 30 hari
+isp hanya dapat memesan jalur yang terdapat dalam lqd
+panjang saluran telepon ke pelanggan lebih dari 18.000 feet
+beberapa bagian saluran telepon menggunakan serat optik
+informasi teknis sukar diperoleh 
+kebutuhan pasar akan teknologi seperti dsl turut mendukung perkembangan vodsl
+;---190---
+setelah dipasang , perangkat ini harus dapat memperlengkapi dirinya sendiri dengan segala konfigurasi dan antar muka yang sesuai dalam jaringannya  
+untuk vodsl , billing seharusnya tidak  menjadi masalah untuk seluruh provider
+proses billing secara keseluruhan tetap sama seperti yang telah ada 
+beberapa kemajuan untuk vdsl telah dicapai dalam pertemuan ini  
+pertemuan ini memperoleh kesepakatan untuk koreksi error , pengacak , interleaver dan struktur dokumen
+namun , kode saluran belum dapat dipilih
+sedangkan , multi-carrier line code  lebih cocok untuk multi-ban frequency  
+interferensi ini berkaitan dengan pilihan pita frekwensi vdsl dan kode saluran untuk vdsl  
+kesulitan dalam hal ini dapat menjadi hambatan bagi g.pnt untuk mendapat persetujuannya
+vdsl menjangkau pelanggan secara ekonomis melalui jaringan telepon
+;---200---
+
+pita frekwensi yang sangat besar bagi vdsl akan tersedia pada aplikasi pita lebar generasi yang akan datang  
+teknologi modulasi single carrier dan multi-carrier telah diajukan untuk g.vdsl
+pertemuan ini memperoleh kesepakatan untuk koreksi error , pengacak , interleaver dan struktur dokumen
+g.shdsl mendukung akses internet dengan kecepatan tinggi , akses lan , videoconferencing , web-site hosting dan gaming  
+pertemuan ini juga menyetujui penggunaan trellis coded pulse amplitude modulation sebagai kode saluran dan parameter pada format frame
+penggunaan adsl untuk perumahan dan akses internet pada kantor kecil juga disetujui dalam pertemuan ini
+untuk menggunakan kembali peralatan reaktor nuklir yang telah didekomisi , teknologi dekontaminasi sangat diperlukan untuk membersihkan permukaan logam dari zat radioaktif yang terdeposit di lapisan oksida  
+setelah reaktor nuklir beroperasi selama beberapa tahun , radionuklida terdeposit di dalam lapisan oksida pada permukaan baja yang digunakan sebagai bahan struktur reaktor nuklir  
+co-60 telah diidentifikasi sebagai penyebab utama radiasi di reaktor nuklir
+teknologi dekontaminasi sangat diperlukan untuk membersihkan radionuklida tersebut dari permukaan baja yang telah digunakan bertahun-tahun tersebut  
+;---210---
+pada penelitian sebelumnya tentang dekontaminasi cobalt dengan florinasi telah dilaporkan dan diperoleh hasil yang baik 
+pada makalah ini diteliti florinasi pada berbagai permukaan oksida dan metal base , seperti aisi 304 dan baja karbon  
+berbagai bentuk aisi 304 dan baja karbon  direndam di dalam air pada suhu 280 c dan tekanan 70 atm 
+setelah proses tersebut , lapisan oksida terbentuk di permukaan  
+gambar 1 menunjukkan skema rangkaian alat plasma yang dibangkitkan dengan microwave
+plasma torch dipasang secara vertikal di atas chamber dan plasma meradiasi sampel yang terletak 4 cm di bawah nozzle / ujung torch 
+generator microwave beroperasi pada power input 1.5 kw dan frekwensi osilator dibangkitkan pada 2.45 ghz 
+gambar 2 menunjukkan skema torch yang digunakan   
+plasma dibangkitkan di ruang antara ujung torch dan nozzle , dimana medan listrik terkonsentrasi pada ruang tersebut
+telah digunakan sem  dan edx masing-masing untuk menganalisis morfologi dan unsur di permukaan  
+;---220---
+sebelum memulai percobaan , tabung dikosongkan dengan memompa gas keluar sampai sekitar 10 torr kemudian tabung diisi kembali dengan gas o2 dan gas cf4 sampai tekanan atmosfer   
+perbandingan gas o2 terhadap gas cf4 bervariasi antara 7 dan 15  
+tekanan di dalam tabung diukur dengan pengukur tekanan dan dipertahankan pada tekanan atmosfer dengan memompa gas buang keluar dari tabung menuju filter gas   
+sampel diletakkan 4 cm di bawah nozzle
+irradiasi plasma berlangsung antara 0 dan 4 menit   
+kondisi iradiasi dijelaskan pada tabel 1  
+pada iradiasi 1 , puncak oksigen menurun dan puncak f muncul setelah iradiasi plasma selama 2 dan 4 menit pada aisi 304 kecuali pada baja karbon   
+penurunan puncak o terjadi pada aisi 304 dan baja karbon setelah iradiasi 2 , kecuali pada baja karbon dengan aliran gas 16 ltr / mnt   
+pada iradiasi 3 juga terjadi hal yang sama seperti iradiasi 2 kecuali pada baja karbon saat iradiasi dengan r=7     
+penurunan puncak o dan munculnya puncak f mengindikasikan adanya proses florinasi di permukaan lapisan oksida aisi 304 dan baja karbon  
+;--230---
+lapisan oksida yang terbentuk pada kondisi suhu dan tekanan seperti bwr di permukaan aisi 304 dan baja karbon dapat difluorinasi dengan mudah menggunakan campuran gas cf4-o2 plasma  
+florinasi pada lapisan oksida baja karbon lebih lambat dibandingkan pada aisi 304 dan lambatnya florinasi pada lapisan oksida baja karbon dapat diperbaiki dengan mengatur komposisi gas plasma
+blg adalah protein yang banyak terdapat pada susu sapi  
+kondisi ini menimbulkan protein tersebut teradsorbsi sebagai antigen yang akan memicu pembentukan ige antibody dalam tubuh   
+reaksi alergi yang ditimbulkan bias berupa diarrhea , exceema atau atopi dermatitis 
+enzimatik hidrolisa pada epitope merupakan salah satu cara untuk menghilangkan sifat alergi ini 
+biasanya dalam industri makanan , batch hidrolisa dengan enzim bebas seringkali dilakukan untuk memperoleh campuran peptide non alergi  
+immobilisasi enzim dapat mengatasi permasalahan ini serta memungkinkan untuk diterapkan dalam sistem kontinyu 
+dalam riset ini , gambas digunakan sebagai carrier dalam immobilisasi enzim  
+immobilisasi dilakukan dengan teknik kovalen bonding 
+;---240---
+reaksi dimulai dengan memasukkan enzim terimobil ke dalam larutan 100 mg blg / 100 ml 0.1 m ammonium bicarbonat mengandung 5 mm cacl2 
+reaksi diamati sepanjang waktu tertentu dengan melakukan sampling pada selang waktu yang telah ditetapkan  
+sampel dianalisis dengan hplc merk shimadzu yang dilengkapi oleh tskg3000swxl column pada flow rate 1 ml / min dengan absorbance 280 nm  
+pengukuran diambil berdasarkan pengurangan konsentrasi blg pada selang waktu tertentu dengan konsentrasi blg saat reaksi dimulai
+produk hidrolisa dari batch proses kemudian dibandingkan dengan produk hidrolisa oleh free trypsin dan sample dianalisis dengan sds-page dalam 15 % gel acrylamide   
+sampel dianalisis melalui hplc dengan kondisi yang sama seperti di atas 
+optimasi immobilisasi dilakukan untuk mengetahui kondisi optimum pada volume epichlorohydrine , konsentrasi cacl2 serta jumlah trypsin yang diimobilkan  
+reduksi blg berkisar 40 - 60 % diperoleh dalam 2 jam reaksi  
+hidrolisa pattern blg oleh free trypsin dan trypsin terimobil menunjukkan pola yang berbeda dengan berat molekuler produk berkisar antara 8,7 - 14,4 kda  
+selain itu , blg juga memiliki sifat adsorption pada permukaan support sehingga diduga produk hidrolisanya menempel pada carrier enzim dan sulit terlepas 
+;---250---
+masalah ini dapat mengganggu pada kelangsungan penggunaan enzim 
+biasanya di industri , mereka menggunakan enzim untuk memperoleh peptide non alergi sebagai campuran untuk dairy food 
+penerapan mungkin bisa dilakukan di industri makanan untuk penyiapan susu atau campuran peptide non alergi  
+b-lactoglobulin merupakan whey protein yang banyak terdapat pada susu  
+polipeptide yang terdiri dari 162 asam amino dan 6 epitope ini dikenal sebagai penyebab alergi pada susu sapi dan seringkali , menjadi masalah khususnya pada bayi  
+sifat alergi blg disebabkan oleh epitope yang dikandungnya 
+hidrolisa epitope oleh enzim trypsin merupakan salah satu alternatif untuk mereduksi allergenisitas blg  
+enzim ini memotong gugus karboksil dari asam amino lysine dan arginine pada epitope blg secara spesifik  
+umumnya di industri makanan , hidrolisa blg oleh enzim bebas merupakan prosedur yang sering dilakukan untuk menyiapkan peptide non alergi  
+sistem ini mempunyai beberapa kelemahan diantaranya tingginya biaya produksi karena enzim hanya dapat digunakan satu kali ;, proses autodigestion yang sering terjadi pada enzim , serta lamanya waktu inkubasi yang dibutuhkan untuk inaktivasi enzim pada proses hilir  
+;---260---
+di unit penyakit dalam rumah sakit dr. cipto mangunkusumo setiap tahun dirawat rata-rata 125 kasus sirosis hati 
+lima puluh dua persen kasus sirosis hati yang dirawat di rumah sakit dr. cipto mangunkusumo disertai asites
+asites merupakan pengumpulan cairan pada ruang peritoneum yang bersifat patologik 
+hanya sekitar 50 % penderita sirosis hati dengan asites dapat bertahan hidup dalam 2 tahun 
+penyebab kematian pada sirosis hati yang sering terjadi adalah perdarahan varises esofagus , peritonitis bakteri spontan , sepsis , gangguan fungsi ginjal , dan koma
+infeksi asites berupa peritonitis bakteri spontan sering dijumpai pada sirosis hati 
+pbs pertama kali dilaporkan oleh conn pada tahun 1964
+semula infeksi ini dianggap jarang terjadi 
+akan tetapi setelah parasentesis abdomen dilakukan secara rutin untuk mendiagnosis kelainan asites pada sirosis hati ternyata , angka kekerapan pbs itu cukup tinggi berkisar antara 10 sampai 30 %  
+hanya sekitar 70 % pbs yang menunjukkan gejala klinis 
+;---270---
+tanda nyeri abdomen didapatkan pada 50 % penderita
+parasentesis abdomen dianjurkan secara rutin pada setiap penderita sirosis hati dengan asites
+selain itu , angka keberhasilan biakan kuman dapat ditingkatkan dengan cara inokulasi spesimen yang dilakukan langsung di tempat tidur
+pada sirosis hati , kemampuan darah untuk membunuh kuman menurun
+pada binatang percobaan , translokasi bakteri usus dapat diteliti secara rinci 
+translokasi bakteri adalah perjalanan bakteri dari lumen usus ke luar usus , kelenjar limfe , limpa , hati , dan ke sirkulasi darah 
+translokasi bakteri ini mungkin disebabkan oleh perubahan barier usus , peningkatan pertumbuhan kuman usus , dan penurunan sistem imun 
+hipertensi portal dapat menimbulkan perubahan mukosa usus sehingga hal itu meningkatkan risiko translokasi bakteri usus 
+pada keadaan sirosis lanjut , translokasi bakteri usus lebih sering terjadi 
+respons imun cairan asites itu pada sirosis hati masih belum jelas 
+;---280---
+pada umumnya , penelitian respons imun dilakukan melalui pemeriksaan darah
+pada asites akibat sirosis hati , diduga aktivitas bakterisid cairan asites menurun sehingga dapat terjadi pbs
+pada payah jantung , cairan asites masih mempunyai aktivitas bakterisid sehingga tidak terjadi pbs
+faktor dalam cairan asites penderita sirosis hati yang memudahkan kejadian pbs belum jelas benar
+oleh karena itu , protein , imunoglobulin , komplemen , serta sel fagosit pada cairan asites merupakan faktor yang mungkin mempengaruhi kejadian pbs
+runyon lebih menekankan penurunan kadar protein , c3 , dan c4 cairan asites sebagai akibat proses dilusi cairan asites
+oleh karena itu , dia berpendapat bahwa faktor volume cairan asites mempunyai peran penting dalam kemampuan untuk membunuh kuman
+protein plasma terdiri atas 52-65 % albumin , 29,5-40 % globulin dan 6,5 % fibrinogen
+sitokin mempunyai peran penting pada proses inflamasi yang disebabkan oleh infeksi
+sitokin dihasilkan oleh sel mononuklear , limfosit , dan sel lain sebagai respons terhadap rangsangan inflamasi
+;--290---
+sitokin juga berperan secara lokal dan sistemik untuk mengaktifkan sel-sel target
+pada pbs terjadi peningkatan sel polimorfonuklear pmn dan sitokin pro-inflamasi
+sitokin pro-inflamasi il-1 , il-6 , il-8 , dan ifn-g diduga akan meningkat pada cairan asites penderita pbs
+dewasa ini , penelitian mengenai pbs pada sirosis hati yang dilaporkan di kepustakaan lebih banyak dilakukan pada sirosis hati karena alkohol
+penelitian pbs pada sirosis hati karena hepatitis virus belum banyak dilakukan padahal di indonesia , sebagian besar sirosis hati berkaitan dengan hepatitis virus 
+jacoeb dalam penelitian mengenai faktor imunoendokrinologis dan seluler lingkungan mikro cairan peritonium mendapatkan bahwa kadar igg , igm , iga , c3 , dan c4 cairan peritoneal jauh lebih rendah daripada serum 
+penelitian mengenai imunitas lokal ini perlu mendapat perhatian sehingga pemahaman mengenai respons imun di cairan pleura , asites , likuor serebrospinal , cairan sendi dan lain-lain akan semakin meningkat
+dengan demikian , penelitian mengenai pbs serta faktor-faktor imunologis cairan asites pada sirosis hati yang mempengaruhi kejadian pbs di indonesia diharapkan akan menambah informasi dan pemahaman mengenai respons imun cairan asites terhadap infeksi 
+sirosis hati mempengaruhi imunitas secara umum dan lokal
+pada penelitian tersebut didapatkan penurunan kadar c3 dan c4 
+;---300---
+
+penelitian mengenai fungsi komplemen , imunoglobulin cairan asites pada pbs menghadapi kesulitan teknis karena kadar komplemen dan imunoglobulin rendah serta jumlah sel fagosit sedikit
+penelitian selama ini lebih banyak menilai faktor-faktor tersebut secara terpisah  
+pada umumnya , penilaian respons imun dilakukan dengan cara pemeriksaan laboratorium darah  
+untuk itu , berbagai faktor yang dapat mempengaruhi respons imun cairan asites terhadap infeksi perlu dinilai
+penilaian tersebut dapat dilakukan secara kuantitatif dan kualitatif
+uji ini merupakan gambaran fungsi respons imun secara keseluruhan  
+populasi terjangkau pada penelitian ini adalah penderita yang dirawat di unit penyakit dalam rumah sakit dr. cipto mangunkusumo dan rumah sakit persahabatan 
+semua subjek penelitian yang memenuhi kriteria dimasukkan dalam penelitian setelah menyatakan persetujuan tindak medik
+pemeriksaan cairan asites yang meliputi pmn , protein , igg , igm , c3 , c4 , dan aktivitas bakterisid dilakukan di bagian patologi klinik rsupn dr. cipto mangunkusumo  
+jumlah leukosit dan pmn dihitung dengan mesin hitung sel
+;---310---
+konsentrasi kompleks imun dapat ditentukan secara kuantitatif dengan mengukur cahaya terhambur dengan alat nefelometer
+penyakit diabetes melitus saat ini sudah menjadi masalah kesehatan yang cukup besar di indonesia  
+dari berbagai penelitian epidemiologi didapatkan prevalensi penderita sekitar 1,5 - 2,3 % pada penduduk dengan usia di atas 15 tahun
+dengan kemajuan teknologi kedokteran  , penanganan penyakit dm semakin baik  ;sehingga komplikasi penyakit ini bergeser dari komplikasi akut ke arah komplikasi menahun  yaitu makroangiopati  , mikroangiopati dan neuropati 
+istilan de ini menggantikan istilah impotensia yang dirasakan kurang tepat untuk menggambarkan keadaan ereksi yang terganggu atau menurun
+menurut the massachusset male aging study pada laki-laki usia 40-70 tahun terdapat 52 % penderita de  
+prevalensi ini meningkat sesuai dengan umur dimana pada usia 40 tahun hanya terdapat 39,1 % sedangkan pada usia 70 tahun , meningkat menjadi 66 % 
+menurut berger dkk dari beberapa telaah literatur pada penderita dm didapatkan prevalensi de antara 27 % - 75 %  
+penis terdiri dari sepasang korpus kavernosa dan sebuah korpus spongiosa  yang melingkari uretra  dimana pada bagian ujungnya membentuk gland penis  
+ke dalam kk , tunika albugenea membentuk cabang-cabang yang disebut columna yang berperan untuk menegakkan penis saat ereksi 
+;---320---
+diantara rongga-rongga vaskuler ini terdapat suatu struktur trabekula yang terdiri dari otot polos dengan jaringan ikat fibro elastis  
+berkas otot polos dalam trabekula tersusun dalam arah yang tidak beraturan dan minimal mempunyai 2 insersio pada kerangka trabekula dan bukan membentuk dinding otot rongga vaskuler
+sumber utama pendarahan berasal dari arteri kavernosa kiri dan kanan  yang kemudian membentuk cabang-cabang arteri helicine ke dalam rongga lacunae
+sedangkan , sistem pembuluh darah balik dari vena-vena kecil di dalam jaringan trabekula membentuk plexus vena subtunika kemudian bergabung membentuk vena emisary yang terletak diantara lapisan tunika albugenea dan kemudian dialirkan keluar dari tunika albugenea 
+sistem syaraf yang terlibat dalam proses ereksi terdiri dari sistem syaraf otonom simpatis dan parasimpatis dimana sistem syaraf simpatis ini berasal dari cordae spinalis segmen toraks ke 11 sampai lumbal 2 sedangkan sistem parasimpatis berasal dari segmen sakral ke 2 sampai ke 4  yang kemudian berintegrasi membentuk pleksus pelvikus di daerah fasia pelvis
+dari pleksus pelvikus inilah keluar nervus cavernosa yang menuju penis 
+sistem syaraf somatik sensoris yang berasal dari daerah genital dan sistem syaraf somatik motorik untuk otot-otot ischiocavernosa dan bulbocavernosa berasal dari nervus pudendus dari segmen anterior sakral ke-2 - ke-4 
+rangsangan yang diterima akan diolah oleh susunan syaraf pusat pada bagian nucleus thalamicus , rhinencephalon dan sistem limbic kemudian diintegrasikan di hipotalamus lalu dikirim impuls melalui pusat syaraf parasimpatis dan simpatis 
+rangsangan seksual akan mengaktifkan sistem syaraf parasimpatis yang akan melepaskan sejumlah neurotransmiter dan kemudian , terjadilah relaksasi otot-otot polos kk dan pembuluh darah arteri cavernosa
+kedua hal ini menyebabkan terjadinya peningkatan aliran darah ke dalam lacunae atau sinusoid 5 - 10 kali lipat sehingga terjadilah pelebaran sinusoid dan akan diikuti oleh penekanan vena subtunika ke dinding t albugenea
+;---330---
+penekanan vena subtunika akan menyebabkan berkurangnya aliran darah ke luar  
+kedua proses inilah yang menyebabkan penis membesar dan mengeras 
+berkurangnya aliran darah vena dan mekanisme penekanan vena-vena subtunika ini dikenal sebagai vena occlusive mechanism  
+untuk mendapatkan ereksi yang maksimal diperlukan kondisi-kondisi yang optimal dari sistem pembuluh darah  , respon otot polos kk  , sistem vena dan sistem persyarafan
+dari semua ini , ternyata no mempunyai peranan yang sangat dominan dalam proses ereksi
+mekanisme ereksi ini merupakan proses aktif pelebaran sinusoid dari kk 
+nitric oxide yang merupakan neurotransmiter non adrenergik non kolinergik akan mengaktifkan enzym guanylat cyclase yang akan membentuk cgmp yang berperan untuk relaksasi otot polos 
+disfungsi ereksi pada penderita dm lebih merupakan kelainan organik daripada kelainan psikogenik  
+keluhan yang sering dirasakan adalah terjadinya penurunan rigiditas penis saat ereksi dan penurunan kemampuan untuk mempertahankan ereksi pada saat melakukan hubungan seksual 
+kelainan organik yang menjadi penyebab de pada dm meliputi antara lain adanya insufisiensi arteri kk  , gangguan veno oclusi mechanism  , dan neuropati  
+;---340---
+sedangkan , kelainan hormonan sebagai penyebab de pada dm saat ini masih diperdebatkan
+kejadian neuropati otonom dan neuropati perifer ternyata sangat tinggi pada penderita dm dengan keluhan de dibandingkan penderita dm tanpa keluhan de  
+namun , neuropati otonom ini tidak dapat diukur secara langsung 
+perubahan yang terjadi pada sistem syaraf antara lain degenerasi axonal dimana filamen-filamen axonal pada tubulus dan mitokondria banyak yang hilang  disertai terjadinya penipisan sel schwan dan membrana basalis dari sel-sel perineural
+pada proses stress oksidatif akibat hiperglikemia akan terjadi penurunan kecepatan hantar syaraf serta penurunan aliran endoneural
+makroangiopati dan mikroangiopati merupakan komplikasi vaskuler yang sering dijumpai pada penderita dm
+pada makroangiopati terjadi perubahan pada tunika intima  , tunika media sebagai akibat proses atherosklerosis  , sehingga akan terjadi penyempitan lumen pembuluh darah
+gangguan ereksi akan terjadi jika terdapat penurunan suplai darah > 50 %  
+kondisi ini akan menyebabkan penurunan tekanan perfusi dan penurunan kecepatan aliran darah sehingga terjadi penurunan jumlah aliran darah ke dalam sinusoid kk 
+sedangkan , pada trabekula kk terjadi penurunan elastisitas jaringan fibroelastik akibat perubahan sintesis kolagen , elastin , jaringan seluler lain dan penurunan respon relaksasi otot polos kk 
+;---350---
+pada penderita dm , hiperglikemi akan menyebabkan terjadinya reaksi non enzimatik antara glukosa dan protein sehingga menimbulkan peningkatan produk glikosilasi yang disebut ages yang bersifat ireversibel  
+dalam jangka panjang , ages ini akan ditimbun di berbagai jaringan yang antara lain pada jaringan ikat kolagen di dalam kk dan tunika albugenea 
+menurut seftel , ages di dalam kk akan mempengaruhi pembentukan no melalui reaksi glikosilasi intraseluler dengan endotelial no synthase  , suatu enzim yang mensintesis l-arginine menjadi no  
+selain itu , ages juga akan menghambat inducible nos yang berperan dalam pembentukan enos 
+sedangkan menurut giuglino , hiperglikemia dapat menimbulkan terjadinya reaksi stress oxidative yang akan membentuk radikal-radikal bebas
+radikal bebas yang dilepaskan ini melalui beberapa mekanisme pada akhirnya akan menyebabkan terjadinya neuropati dan vaskulopati
+pada tahap ini , kita harus dapat menentukan ada atau tidaknya masalah de
+melalui anamnesis seksual  , medikal dan psikososial serta pemeriksaan fisik yang terarah  , kita harus dapat membedakan keluhan yang bersifat gangguan ereksi  , gangguan ejakulasi  , gangguan libido atau gangguan orgasmus  
+nilai > 20 menunjukkan fungsi ereksi yang normal  dan nilai < 10 menunjukkan disfungsi ereksi yang sedang sampai berat 
+riwayat medik mencakup riwayat penyakit , pembedahan daerah urogenital atau trauma tulang belakang
+;---360---
+faktor risiko yang berhubungan dengan de antara lain merokok  , alkohol  , penyakit dm  , kardiovaskular  , depresi  , gagal ginjal  , penyakit hati kronis 
+disamping itu  , beberapa obat juga dapat mempengaruhi de antara lain canabis  , lsd  
+setelah tahap i selesai dilakukan diskusi dengan penderita dan pasangannya terhadap hasil-hasil pemeriksaan tahap i   
+tahapan terapi lini pertama ini dipilih dengan pertimbangan pemakaian yang mudah , reversibel , tidak invasif dan biaya yang ringan
+pilihan utama lini pertama ini meliputi obat oral sildenafil sitrat , apomorphin  , pentolamin  , alat vakum jerat dan psikoterapi
+sildenafil sitrat merupakan penghambat selektif enzim phosphodiesterase tipe 5 yang berperan pada degradasi cgmp di dalam kk 
+enzim pde5 yang berperan dalam degradasi cgmp akan dihambat oleh sildenafil
+jadi , pengobatan dengan sildenafil ini tidak akan terjadi ereksi tanpa ada stimulus seksual
+sildenafil dimetabolisme oleh hati melalui mekanisme sitokrom p450 kemudian diubah menjadi metabolit n desmethyl dengan potensi +50 % dari senyawa induk  
+keberhasilan sildenafil sitrat untuk terapi de ini sudah dilaporkan oleh banyak peneliti dan dikatakan bahwa obat ini dapat digunakan untuk mengatasi de oleh berbagai penyebab dengan hasil yang memuaskan
+;---370---
+terdapat peningkatan kemampuan penetrasi saat hubungan seksual sampai 60 % , 84 % dan 100 % pada dosis 25 mg  , 50 mg dan 100 mg  
+demikian pula , kemampuan untuk mempertahankan ereksi meningkat sampai 130 %  
+sedangkan , hasil penelitian marks ls terhadap 74 penderita de organik didapatkan hasil yang cukup baik dengan peningkatan kemampuan fungsi ereksi yang dinilai dengan iief sampai 66 % sedangkan kemampuan untuk melakukan penetrasi meningkat sampai 76 % selain itu kemampuan untuk mempertahankan ereksi yang tetap maksimal mencapai 95 %
+peningkatan kemampuan ereksi yang terjadi meningkat sesuai dengan dosis

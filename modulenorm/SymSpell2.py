@@ -301,7 +301,7 @@ class SymSpell2():
         print('Saved dictionary...')
         return;
 
-    def load_comple_model_from_json(self,filename,encoding="utf8"):
+    def load_complete_model_from_json(self,filename,encoding="utf8"):
         print('Loading dictionary...')
         myData = dict()
         with open(filename, 'r',encoding=encoding) as fp:

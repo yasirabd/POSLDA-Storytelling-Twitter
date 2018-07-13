@@ -21,11 +21,14 @@ class Tokenize():
 
         # S:jika remove punct true : hapus tanda baca
         if removepunct:
-            words = [z.translate(str.maketrans("","", string.punctuation)).strip() for z in words]
+            remove = string.punctuation
+            remove = remove.replace("-", "")
+            transtab = str.maketrans('', '', remove)
+            words = [w.translate(transtab).strip() for w in words]
             # E:jika remove punct true : hapus tanda baca
 
             # Hapus seluruh empty char pada list
-            words = [x.strip().lower() for x in words if x.strip()]
+            words = [w.strip().lower() for w in words if w.strip()]
 
             # S: Hapus stopword
             # stopword = ['memang']

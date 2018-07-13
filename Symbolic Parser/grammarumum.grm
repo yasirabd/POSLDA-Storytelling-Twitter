@@ -1,0 +1,1124 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;grammarumum.grm
+;Pengurai Kalimat Bahasa Indonesia
+;
+;Author        : Joice 
+;Last Modified : Januari 2002
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Let N be <subcat> = !istilah 
+Let Adj be <subcat> = !biasa
+
+
+Rule KALIMAT	-> KLAKTIF/KLPASIF/INVERSI
+	<KALIMAT subcat> = <KLAKTIF cat>	
+	<KALIMAT subcat> = <KLPASIF cat>	
+	<KALIMAT subcat> = <INVERSI cat>	
+
+Rule KLAUSA		-> KALIMAT
+	<KLAUSA subcat> = <KALIMAT subcat>	
+
+Rule INVERSI	-> (WDEPANKL) (KET)  PRED SUBJP 
+			(KKORD MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED)  	
+	<PRED subcat> = Vpasif	
+
+Rule KLAKTIF	-> (WDEPANKL)
+		   {
+		   SUBJ PRED_1 (KET_1) {OBJ (KET)/OBJKLAUSA} (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED})/
+		   SUBJ PRED_2 
+		    {
+		   	{ {OBJ_1/OBJ_2/OBJ_3}
+		   	  {PEL_1/PEL_2}
+		   	} 
+			/
+			{ {OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8}
+			  PEL_2
+			}
+		     (KET) (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED})
+		    }		   
+		  /
+		   SUBJ PRED_3 {OBJ (KET)/OBJKLAUSA} (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED}) /
+		   SUBJ PRED_3 (KET)/
+		   SUBJ (KET_1) PRED_4 {PEL_3 (KET)/PELKLAUSA} (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED}) /
+		   SUBJ PRED_5 (KET) (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED}) /
+		   {SUBJ_1/SUBJ_2/SUBJ_3/SUBJ_4/SUBJ_5/SUBJ_7} PRED_6 (KET) /
+		   {SUBJ_1/SUBJ_2/SUBJ_3} PRED_7 (KET) /
+		   {SUBJ_1/SUBJ_2/SUBJ_3} PRED_8 PEL_4 (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED}) /
+		   ;{ {SUBJ_1/SUBJ_2/SUBJ_3/SUBJ_4/SUBJ_5} PRED_9 (PEL_4/PENJELAS) /
+		   {SUBJ_1/SUBJ_2} PRED_9 (PEL_4/PENJELAS) /
+		   {SUBJ_1/SUBJ_2/SUBJ_6/SUBJ_7} PRED_9 {KET/PENJELAS} (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED}) / 
+		   {SUBJ_5/SUBJ_7} PRED_9 /	
+		   SUBJ_3 PRED_9 (PEL_4/KET) /	
+		   SUBJ_4 PRED_9 (KET/PENJELAS) /	
+		   {SUBJ_1/SUBJ_2/SUBJ_3} PRED_10 (KET) /
+		   SUBJ_6 PRED_11 KET
+		   }
+	<SUBJ_1 subcat>	= orang
+	<SUBJ_2 subcat>	= milik
+	<SUBJ_3 subcat>	= FPRON
+	<SUBJ_4 subcat>	= benda
+	<SUBJ_5 subcat>	= Vpasif	
+	<SUBJ_6 subcat> = tberpelengkap	
+	<SUBJ_7 subcat>	= istilah	
+	<PRED_1 subcat> = ekatransitif
+	<PRED_2 subcat> = dwitransitif
+	<PRED_3 subcat> = semitransitif
+	<PRED_4 subcat> = berpelengkap
+	<PRED_5 subcat> = tberpelengkap
+	<PRED_6 subcat> = FNUM
+	<PRED_7  subcat> = warna
+	<PRED_8 subcat>  = bandingan
+	<PRED_9 subcat>  = biasa
+	<PRED_10 subcat> = profesi
+	<PRED_11 subcat> = istilah
+	<OBJ_1 subcat>	= orang
+	<OBJ_2 subcat>	= profesi
+	<OBJ_3 subcat>	= FPRON
+	<OBJ_4 subcat>	= tempat
+	<OBJ_5 subcat>	= benda
+	<OBJ_6 subcat>	= istilah
+	<OBJ_7 subcat>	= milik
+	<OBJ_8 subcat>	= FNUM
+	<PEL_1 subcat>	= FN
+	<PEL_2 subcat>	= NONFN
+	<PEL_3 subcat>	= PELINTR
+	<PEL_4 subcat>	= PELADJ
+	<KET_1 subcat>  = KCARA
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ subcat>
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ_1 subcat>
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ_2 subcat>
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ_3 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_1 subcat>		
+	<MAJEMUKSETARAPRED subcat> = <PRED_2 subcat>		
+	<MAJEMUKSETARAPRED subcat> = <PRED_3 subcat>		
+	<MAJEMUKSETARAPRED subcat> = <PRED_4 subcat>				
+	<MAJEMUKSETARAPRED subcat> = <PRED_8 subcat>
+
+
+
+Rule KLPASIF	-> (WDEPANKL) SUBJP PRED (OBJP) (PELP_2/PELP_3/PELP_4) (KET / KET PELP_1) 
+		   (KKORD {MAJEMUKSETARASUBJ/MAJEMUKSETARAPRED})
+	<PRED subcat>   = Vpasif
+	<PELP_1 subcat>	= Prep		
+	<PELP_2 subcat>	= Prep		
+	<PELP_3 subcat>	= Adj		
+	<PELP_4 subcat>	= FVPEL		
+	<MAJEMUKSETARASUBJ subcat> = <SUBJP subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED subcat>
+
+Rule SUBJP	-> {OBJ_1/OBJ_2/OBJ_3/OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8} (KET)
+		/ OBJKLAUSA
+   <OBJ_1 subcat> = tempat
+   <OBJ_2 subcat> = benda
+   <OBJ_3 subcat> = orang
+   <OBJ_4 subcat> = profesi
+   <OBJ_5 subcat> = istilah
+   <OBJ_6 subcat> = milik
+   <OBJ_7 subcat> = FNUM
+   <OBJ_8 subcat> = FPRON
+   <OBJKLAUSA subcat> = KLAUSA
+   <SUBJP subcat> = <OBJ_1 subcat>
+   <SUBJP subcat> = <OBJ_2 subcat>
+   <SUBJP subcat> = <OBJ_3 subcat>
+   <SUBJP subcat> = <OBJ_4 subcat>
+   <SUBJP subcat> = <OBJ_5 subcat>   
+   <SUBJP subcat> = <OBJ_6 subcat>
+   <SUBJP subcat> = <OBJ_7 subcat>
+   <SUBJP subcat> = <OBJ_8 subcat>
+   <SUBJP subcat> = <OBJKLAUSA subcat>
+
+Rule OBJP	-> OBJ_1/OBJ_2/OBJ_3/OBJ_4/OBJ_5/OBJ_6
+   <OBJ_1 subcat> = tempat
+   <OBJ_2 subcat> = benda
+   <OBJ_3 subcat> = orang
+   <OBJ_4 subcat> = profesi
+   <OBJ_5 subcat> = istilah
+   <OBJ_6 subcat> = milik
+   
+
+Rule PELP	-> (Prep) {FN_1 / FN_2 / FN_3 / FN_4 / FN_5 / FPRON_1 / FPRON_2}
+				/ FVPEL	
+				/ Adj	
+	<Prep subcat>    = pelaku
+	<FN_1 subcat>    = orang
+	<FN_2 subcat>    = profesi
+	<FN_3 subcat>    = benda
+	<FN_4 subcat>    = istilah
+	<FN_5 subcat>    = tempat
+	<Num subcat>     = biasa
+	<Adj subcat>     = biasa
+	<FNUM subcat>    = GOLATR
+	<FPRON_1 subcat> = orang
+	<FPRON_2 subcat> = tunjuk
+	<PELP subcat> = <FN_1 cat>
+	<PELP subcat> = <FN_2 cat>
+	<PELP subcat> = <FN_3 cat>
+	<PELP subcat> = <FN_4 cat>
+	<PELP subcat> = <FN_5 cat>
+	<PELP subcat> = <FVPEL cat>
+	<PELP subcat> = <Adj cat>
+	<PELP subcat> = <FPRON_1 cat>
+	<PELP subcat> = <FPRON_2 cat>
+	<PELP subcat> <= <Prep cat>
+
+	
+Rule SUBJ	-> (KKAL) {FNSUBJ/FPRON/FADJ/FVSUBJ}
+		   (KKORD_1 PENGURAI KKORD_2)
+		   (KET (Kkord_3 SUBJ_1) )
+	<KKORD_1 subcat> = koma
+	<KKORD_2 subcat> = koma
+	<Kkord_3 subcat> = biasa
+	<SUBJ subcat> = <FNSUBJ subcat>
+	<SUBJ subcat> = <FPRON cat>
+	<SUBJ subcat> = <FADJ subcat>
+	<SUBJ subcat> = <FVSUBJ subcat>
+
+	
+Rule PRED	-> FADJ/FNUM/(Adv) FN/FVPRED
+	<FNUM subcat>	= GOLATR
+	<Adv subcat>	= tidak
+	<PRED subcat> 	= <FADJ subcat>
+	<PRED subcat> 	= <FNUM cat>
+	<PRED subcat> 	= <FN subcat>
+	<PRED subcat> 	= <FVPRED subcat>
+	
+Rule OBJ	-> {FN/FNWAKTU/FPRON/FNUM}
+		   (KKORD_1 PENGURAI KKORD_2)	
+	<KKORD_1 subcat> = koma
+	<KKORD_2 subcat> = koma
+	<FNUM subcat>	= GOLATR
+	<FPRON subcat>	= orang
+	<OBJ subcat> = <FN subcat>
+	<OBJ subcat> = <FNWAKTU cat>
+	<OBJ subcat> = <FNUM cat>
+	<OBJ subcat> = <FPRON cat>
+	
+	
+Rule OBJKLAUSA	-> (Prep) FVOBJKET /
+		   {KKORD/Ksub_1/Ksub_2} KLAUSA
+	<Prep subcat>    = tujuan
+	<Ksub_1 subcat>  = komplementasi
+	<Ksub_2 subcat>  = tujuan	
+	<KKORD subcat>   = koma
+	<OBJKLAUSA subcat> = <KLAUSA cat>
+	<OBJKLAUSA subcat> = <FVOBJKET cat>
+
+Rule PEL	-> {PELDWI / PELINTR / PELADJ} (KKORD_1 PENGURAI (KKORD_2))	
+	<KKORD_1 subcat> = koma
+	<KKORD_2 subcat> = koma
+	<PEL subcat> 	= <PELDWI subcat>
+	<PEL subcat> 	= <PELINTR cat>
+	<PEL subcat> 	= <PELADJ cat>
+
+Rule PELADJ	-> PELDWI
+
+
+Rule PELKLAUSA	-> Ksub KLAUSA /
+		   KKORD KLAUSA
+	<KKORD subcat>  = koma
+
+Rule PELINTR	-> {Prep_1/Prep_4/Prep_5} FN_1 /
+		   Prep_2 {FN_3 / FN_4 / FN_5}/
+		   FN_2 /
+		   (Prep_1) FNWAKTU/
+		   FNUM_1 / FNUM_2 /
+		   (Prep_3) FVPEL /
+		   FADJ_1 / (Prep_3) FADJ_2 /
+		   FPRON / FPRON_1 FN/
+		   PENJELAS 
+	<Prep_1 subcat> = tempat
+	<Prep_2 subcat> = pelaku
+	<Prep_3 subcat> = tujuan
+	<Prep_4 subcat> = ihwal
+	<Prep_5 subcat> = serta	
+	<FNUM_1 subcat> = pokok
+	<FNUM_2 subcat> = GOLATR
+	<FADJ_1 subcat> = warna
+	<FADJ_2 subcat> = biasa
+	<FPRON subcat>  = tunjuk
+	<FPRON_1 subcat>= tanya
+	<FN_3 subcat>   = tempat
+	<FN_4 subcat>   = benda
+	<FN_5 subcat>   = istilah	
+	
+
+Rule PELDWI	-> FN/NONFN
+	<PELDWI subcat>	= <FN cat>
+	<PELDWI subcat>	= <NONFN cat>
+
+Rule MAJEMUKSETARASUBJ	-> (WDEPANKLMAJEMUK)
+		   {
+		   SUBJ PRED_1 {OBJ (KET)/OBJKLAUSA}/
+		   SUBJ PRED_2 
+		    {
+		   	(OBJ_1/OBJ_2/OBJ_3) {PEL_1/PEL_2} /
+			(OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8) PEL_2
+		    }   
+		   /
+		    SUBJ PRED_3 {(OBJ) (KET)/OBJKLAUSA} /
+		    SUBJ PRED_4 {PEL_3 (KET)/PELKLAUSA} /
+		    SUBJ {PRED_5 (KET)/PRED_6 (KET)} /
+		    {SUBJ_1/SUBJ_2/SUBJ_3} PRED_7 (KET) /
+		    {SUBJ_1/SUBJ_2/SUBJ_3} PRED_8 PEL_4 /
+		    {SUBJ_1/SUBJ_2/SUBJ_3} PRED_9 (PEL_4) /
+		    {SUBJ_1/SUBJ_2/SUBJ_3} PRED_10 (KET) /
+		    SUBJP PRED_12 (OBJP) (PELP) (KET) 
+		   }
+		   (KKORD MAJEMUKSETARASUBJ_1)
+	<SUBJ_1 subcat>	= orang
+	<SUBJ_2 subcat>	= milik
+	<SUBJ_3 subcat>	= FPRON
+	<PRED_1 subcat> = ekatransitif
+	<PRED_2 subcat> = dwitransitif
+	<PRED_3 subcat> = semitransitif
+	<PRED_4 subcat> = berpelengkap
+	<PRED_5 subcat> = tberpelengkap
+	<PRED_6 subcat> = FNUM
+	<PRED_7 subcat> = warna
+	<PRED_8 subcat> = bandingan
+	<PRED_9 subcat> = biasa
+	<PRED_10 subcat> = profesi
+	<PRED_12 subcat> = Vpasif
+	<OBJ_1 subcat>	= orang
+	<OBJ_2 subcat>	= profesi
+	<OBJ_3 subcat>	= FPRON
+	<OBJ_4 subcat>	= tempat
+	<OBJ_5 subcat>	= benda
+	<OBJ_6 subcat>	= istilah
+	<OBJ_7 subcat>	= milik
+	<OBJ_8 subcat>	= FNUM
+	<PEL_1 subcat>	= FN
+	<PEL_2 subcat>	= NONFN
+	<PEL_3 subcat>	= PELINTR
+	<PEL_4 subcat>	= PELADJ
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ subcat>
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ_1 subcat>
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ_2 subcat>
+	<MAJEMUKSETARASUBJ subcat> = <SUBJ_3 subcat>
+	<MAJEMUKSETARASUBJ_1 subcat> = <MAJEMUKSETARASUBJ subcat>
+	
+
+Rule MAJEMUKSETARAPRED	-> (WDEPANKLMAJEMUK)
+		   {
+		   PRED_1 {OBJ (KET)/OBJKLAUSA}/
+		   PRED_2 
+		    {
+		   	(OBJ_1/OBJ_2/OBJ_3) {PEL_1/PEL_2} /
+		   	(OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8) PEL_2
+		    }		   
+		   /
+		   PRED_3 {(OBJ) (KET)/OBJKLAUSA} /
+		   PRED_4 {PEL_3 (KET)/PELKLAUSA} /
+		   PRED_5 KET /
+		   PRED_8 PEL_4 /
+		   PRED_12 (KET) /
+		   PRED_12 OBJP (PELP) (KET_1) 
+		   }
+		   (KKORD MAJEMUKSETARAPRED_1)
+	<PRED_1 subcat> = ekatransitif
+	<PRED_2 subcat> = dwitransitif
+	<PRED_3 subcat> = semitransitif
+	<PRED_4 subcat> = berpelengkap
+	<PRED_5 subcat> = tberpelengkap
+	<PRED_8 subcat> = bandingan
+	<PRED_10 subcat> = profesi
+	<PRED_12 subcat> = Vpasif
+	<OBJ_1 subcat>	= orang
+	<OBJ_2 subcat>	= profesi
+	<OBJ_3 subcat>	= FPRON
+	<OBJ_4 subcat>	= tempat
+	<OBJ_5 subcat>	= benda
+	<OBJ_6 subcat>	= istilah
+	<OBJ_7 subcat>	= milik
+	<OBJ_8 subcat>	= FNUM
+	<PEL_1 subcat>	= FN
+	<PEL_2 subcat>	= NONFN
+	<PEL_3 subcat>	= PELINTR
+	<PEL_4 subcat>	= PELADJ
+	<MAJEMUKSETARAPRED subcat> = <PRED_1 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_2 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_3 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_4 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_5 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_8 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_10 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_11 subcat>
+	<MAJEMUKSETARAPRED subcat> = <PRED_12 subcat>
+	<MAJEMUKSETARAPRED_1 subcat> = <MAJEMUKSETARAPRED subcat>
+	
+Rule WDEPANKL	-> Kkal (KET Kkord)/ 
+		   Kkal Kkord/
+		   KET Kkord/
+		   Num Kkord
+	<Kkord subcat> = koma
+	<Kkord_1 subcat> = koma
+	<Num subcat>   = tingkat
+	
+
+Rule WDEPANKLMAJEMUK	-> Kkal (KET)/
+		            KET
+
+Rule NONFN	-> FNUM_1 / FNUM_2 / FVPEL / FPRON /
+		   FADJ_1 / FADJ_2 / Ksub KLAUSA	
+	<Ksub subcat>   = komplementasi
+	<FNUM_1 subcat>	= pokok
+	<FNUM_2 subcat>	= GOLATR
+	<FPRON subcat>	= orang
+	<FADJ_1 subcat>	= warna
+	<FADJ_2 subcat>	= biasa
+
+
+Rule KKORD	-> Kkord_1/
+		   Kkord_2/
+		   Kkord_3/
+		   Kkord_1 Kkord_3/
+		   Kkord_3 Kkord_2 Kkord_4
+	<Kkord_1 subcat> = koma
+	<Kkord_2 subcat> = garing
+	<Kkord_3 subcat> = biasa
+	<Kkord_4 subcat> = biasa
+	<KKORD subcat> <= <Kkord_1 subcat>
+	<KKORD subcat> <= <Kkord_2 subcat>
+	<KKORD subcat> = <Kkord_3 subcat>
+
+	
+Rule FADJ	-> {(WDEPAN/Art) {ADJATR_1/ADJATR_2} (WBELAKANG)/
+                    (WDEPAN/Art) ADJATR_3 (WBELAKANG)} 
+	<ADJATR_1 subcat> = biasa
+	<ADJATR_2 subcat> = bandingan	
+	<ADJATR_3 subcat> = warna
+	<FADJ subcat> = <ADJATR_1 subcat>
+	<FADJ subcat> = <ADJATR_2 subcat>
+	<FADJ subcat> = <ADJATR_3 subcat>
+	<FADJ_1 subcat> = <WDEPAN subcat>
+
+	
+Rule ADJATR	-> {Adj_1/Adj_2/Adj_3} (KKORD ADJATR_1)
+	<Adj_1 subcat> = biasa
+	<Adj_2 subcat> = bandingan
+	<Adj_3 subcat> = warna
+	<ADJATR subcat> = <Adj_1 subcat>
+	<ADJATR subcat> = <Adj_2 subcat>
+	<ADJATR subcat> = <Adj_3 subcat>
+
+
+Rule FPRON	-> { (Art/Num_1/Num_2) 
+		     {Pron_1 (PENJELAS) (Pron_2)/Pron_3/(Prep_1) Pron_4} 
+		     (Part/Num_3) 
+		     (Kkord_1 {WBLKGFN/FNUM} Kkord_2)
+		   }
+	<Kkord_1 subcat> = buka
+	<Kkord_2 subcat> = tutup
+	<Pron_1 subcat> = orang
+	<Pron_2 subcat> = tunjuk
+	<Pron_3 subcat> = tunjuk
+	<Pron_4 subcat> = tanya
+	<Num_1 subcat> = pokok
+	<Num_2 subcat> = biasa
+	<Num_3 subcat> = tingkat
+	<Prep_1 subcat> = tempat
+	<FPRON subcat>	= <Pron_1 subcat>
+	<FPRON subcat>	= <Pron_3 subcat>
+	<FPRON subcat>	= <Pron_4 subcat>
+
+Rule FVPRED	-> (WDEPAN) 
+		   {Vtran/Vintr/Vpasif} 
+		   (WBELAKANG) (KKORD FVPRED_1)
+	<FVPRED subcat> = <Vtran subcat>
+	<FVPRED subcat> = <Vintr subcat>
+	<FVPRED subcat> = <Vpasif cat>
+	<FVPRED_1 subcat> = <FVPRED subcat>
+
+Rule FVSUBJ	-> (Adv){
+		   Vtran_1 (OBJ)/
+		   Vtran_2  
+		   {
+		   	{ (OBJ_1/OBJ_2/OBJ_3)
+		   	  (PEL_1/PEL_2)
+		   	}
+			/
+			{ (OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8)
+			  (PEL_2)
+			}
+		   }		   
+		 /
+		   Vtran_3 (OBJ)/
+		   Vintr_1 (PEL_3)/
+		   Vintr_2/
+		   Vpasif OBJP PELP
+		   }
+		   (KKORD_1 FVSUBJ_1)
+	<Adv subcat>	 = tidak
+	<Vtran_1 subcat> = ekatransitif
+	<Vtran_2 subcat> = dwitransitif
+	<Vtran_3 subcat> = semitransitif
+	<Vtran_4 subcat> = ekatransitif
+	<Vintr_1 subcat> = berpelengkap
+	<Vintr_2 subcat> = tberpelengkap
+	;<Vpasif subcat>  = transitif
+	<OBJ_1 subcat>	= orang
+	<OBJ_2 subcat>	= profesi
+	<OBJ_3 subcat>	= FPRON
+	<OBJ_4 subcat>	= tempat
+	<OBJ_5 subcat>	= benda
+	<OBJ_6 subcat>	= istilah
+	<OBJ_7 subcat>	= milik
+	<OBJ_8 subcat>	= FNUM
+	<PEL_1 subcat>	= FN
+	<PEL_2 subcat>	= NONFN
+	<PEL_3 subcat>	= PELINTR
+	<PELP subcat>	= Prep
+	<FVSUBJ subcat>	= <Vtran_1 subcat>
+	<FVSUBJ subcat>	= <Vtran_2 subcat>
+	<FVSUBJ subcat>	= <Vtran_3 subcat>
+	<FVSUBJ subcat>	= <Vtran_4 subcat>
+	<FVSUBJ subcat>	= <Vintr_1 subcat>
+	<FVSUBJ subcat>	= <Vintr_2 subcat>
+	<FVSUBJ_1 subcat> = <FVSUBJ subcat>
+
+Rule FVOBJKET	-> (WDEPAN)
+		   {
+		   	{Vtran_1 (WBELAKANG) OBJ/
+		   	Vtran_2
+			{
+		   	  	{ {OBJ_1/OBJ_2/OBJ_3}	
+		   	  	  {PEL_1/PEL_2}
+		   		}
+				/
+				{ {OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8}
+			  	  PEL_2
+				}
+		   	}		   		   		   	
+		   	/
+		   	Vtran_3 OBJ/
+		   	Vintr_1 PEL_3/
+		   	Vpasif (OBJP) (PELP_1/PELP_2/PELP_3) (WBELAKANG)	
+		   	} (KET)
+		   	/
+		   	{{Vtran_1/
+		   	Vtran_2/
+		   	Vtran_3/
+		   	Vintr_2} (KET)
+		   	(WBELAKANG (PENJELAS)/PENJELAS)}
+		   } (KKORD_1 FVOBJKET_1)	
+	<Vtran_1 subcat> = ekatransitif
+	<Vtran_2 subcat> = dwitransitif
+	<Vtran_3 subcat> = semitransitif
+	<Vintr_1 subcat> = berpelengkap
+	<Vintr_2 subcat> = tberpelengkap
+	;<Vpasif subcat> = transitif
+	<Adv subcat>   = tidak
+	<OBJ_1 subcat>	= orang
+	<OBJ_2 subcat>	= profesi
+	<OBJ_3 subcat>	= FPRON
+	<OBJ_4 subcat>	= tempat
+	<OBJ_5 subcat>	= benda
+	<OBJ_6 subcat>	= istilah
+	<OBJ_7 subcat>	= milik
+	<OBJ_8 subcat>	= FNUM
+	<PEL_1 subcat>	= FN
+	<PEL_2 subcat>	= NONFN
+	<PEL_3 subcat>	= PELINTR
+	<PELP_1 subcat>	= Adj
+	<PELP_2 subcat>	= Prep
+	<PELP_3 subcat>	= FPRON
+	;<PELP_4 subcat>	= FN
+	<FVOBJKET subcat> = <Vtran_1 subcat>
+	<FVOBJKET subcat> = <Vtran_2 subcat>
+	<FVOBJKET subcat> = <Vtran_3 subcat>
+	<FVOBJKET subcat> = <Vintr_1 subcat>
+	<FVOBJKET subcat> = <Vintr_2 subcat>
+	<FVOBJKET subcat> = <Vpasif cat>
+
+
+Rule FVPEL	-> (WDEPAN)
+		   {
+		   	{Vtran_1 OBJ/
+		   	Vtran_2
+			{
+		   	  	{ (OBJ_1/OBJ_2/OBJ_3)
+		   	  	  {PEL_1/PEL_2}
+		   		}
+				/
+				{ (OBJ_4/OBJ_5/OBJ_6/OBJ_7/OBJ_8)
+			  	  PEL_2
+				}
+		   	}		   		   		   	
+		   	/
+		   	Vtran_3 OBJ/
+		   	Vintr_1 PEL_3/
+			Vintr_2 (PENJELAS)/
+		   	Vpasif PELP
+		   	}
+		   	/
+		   	{{Vtran_1/
+		   	Vtran_2/
+		   	Vtran_3/
+		   	Vpasif}
+		   	(WBELAKANG) (PENJELAS)}
+		   }
+		   ((KET) KKORD_1 FVPEL_1)
+	<Vtran_1 subcat> = ekatransitif
+	<Vtran_2 subcat> = dwitransitif
+	<Vtran_3 subcat> = semitransitif
+	<Vintr_1 subcat> = berpelengkap
+	<Vintr_2 subcat> = tberpelengkap
+	;<Vpasif subcat> = transitif
+	<OBJ_1 subcat>	= orang
+	<OBJ_2 subcat>	= profesi
+	<OBJ_3 subcat>	= FPRON
+	<OBJ_4 subcat>	= tempat
+	<OBJ_5 subcat>	= benda
+	<OBJ_6 subcat>	= istilah
+	<OBJ_7 subcat>	= milik
+	<OBJ_8 subcat>	= FNUM
+	<PEL_1 subcat>	= FN
+	<PEL_2 subcat>	= NONFN
+	<PEL_3 subcat>	= PELINTR
+	<FVPEL subcat> = <Vtran_1 subcat>
+	<FVPEL subcat> = <Vtran_2 subcat>
+	<FVPEL subcat> = <Vtran_3 subcat>
+	<FVPEL subcat> = <Vintr_1 subcat>
+	<FVPEL subcat> = <Vintr_2 subcat>
+	<FVPEL subcat> = <Vpasif cat>
+
+
+Rule WDEPAN	-> {Adv_1 (Adv_2) (Adv_3)/Adv_2 (Adv_3)/Adv_3
+		/Adv_4 (Adv_5) (Adv_1) (Adv_2) (Adv_3)	
+		/Adv_5 (Adv_4) (Adv_1) (Adv_2) (Adv_3)
+		/{Adv_1/Adv_2/Adv_3} Adv_4
+		/{Adv_1/Adv_2/Adv_3} Adv_5}		
+		   (KKORD WDEPAN_1)
+	<Adv_1 subcat> = depan1
+	<Adv_2 subcat> = depan2
+	<Adv_3 subcat> = depan3
+	<Adv_4 subcat> = aspek
+	<Adv_5 subcat> = tidak
+	<WDEPAN_1 subcat> = <WDEPAN subcat>
+
+Rule WBELAKANG	-> Adv/Part
+	<Adv subcat> = belakang
+
+
+Rule KET	->(KKORD) 
+		  { {
+		    KIHWAL/
+		    KSYARAT_3/
+		    KSALING/
+		    KSEBAB_3/
+		    KSERTA/
+		    KBANDING_3/KBANDING_4/KBANDING_5/KBANDING_6/
+		    KCARA_3/KCARA_4/
+		    KTUJUAN_3/KTUJUAN_4/KTUJUAN_5/KTUJUAN_6/
+		    KALAT_2/
+		    KWAKTU_3/KWAKTU_4/KWAKTU_5/KWAKTU_6/
+		    KTEMPAT/
+		    KSUMBER/
+		    KKAL
+		   }
+		   (KET_1)		
+		/
+		   KHASIL/
+		   KKONSESIF/
+		   KANDAI/
+		   KSYARAT_1/ KSYARAT_2/
+		   KSEBAB_1/ KSEBAB_2/
+		   KBANDING_1/ KBANDING_2/
+		   KCARA_1/ KCARA_2/
+		   KTUJUAN_1/ KTUJUAN_2/
+		   KALAT_1/
+		   KWAKTU_1/ KWAKTU_2
+		}
+	<KSYARAT_1 subcat> = KLAUSA
+	<KSYARAT_2 subcat> = FVOBJKET
+	<KSYARAT_3 subcat> = FN
+	<KSEBAB_1 subcat> = KLAUSA
+	<KSEBAB_2 subcat> = FVOBJKET
+	<KSEBAB_3 subcat> = FN
+	<KBANDING_1 subcat> = KLAUSA
+	<KBANDING_2 subcat> = FVOBJKET
+	<KBANDING_3 subcat> = FN
+	<KBANDING_4 subcat> = FNUM
+	<KBANDING_5 subcat> = FPRON
+	<KBANDING_6 subcat> = KTEMPAT
+	<KCARA_1 subcat> = KLAUSA
+	<KCARA_2 subcat> = FVOBJKET
+	<KCARA_3 subcat> = FN
+	<KCARA_4 subcat> = FADJ
+	<KTUJUAN_1 subcat> = KLAUSA
+	<KTUJUAN_2 subcat> = FVOBJKET
+	<KTUJUAN_3 subcat> = FN
+	<KTUJUAN_4 subcat> = FPRON
+	<KTUJUAN_5 subcat> = FADJ
+	<KTUJUAN_6 subcat> = FNUM
+	<KALAT_1 subcat> = KLAUSA
+	<KALAT_2 subcat> = FN
+	<KWAKTU_1 subcat> = KLAUSA
+	<KWAKTU_2 subcat> = FVOBJKET
+	<KWAKTU_3 subcat> = FNWAKTU
+	<KWAKTU_4 subcat> = FNUM
+	<KWAKTU_5 subcat> = KTEMPAT
+	<KWAKTU_6 subcat> = FPRON
+	<KET subcat>	= <KTEMPAT cat>
+	<KET subcat>	= <KWAKTU_1 cat>
+	<KET subcat>	= <KWAKTU_2 cat>
+	<KET subcat>	= <KWAKTU_3 cat>
+	<KET subcat>	= <KWAKTU_4 cat>
+	<KET subcat>	= <KWAKTU_5 cat>
+	<KET subcat>	= <KWAKTU_6 cat>
+	<KET subcat>	= <KALAT_1 cat>
+	<KET subcat>	= <KALAT_2 cat>
+	<KET subcat>	= <KTUJUAN_1 cat>
+	<KET subcat>	= <KTUJUAN_2 cat>
+	<KET subcat>	= <KTUJUAN_3 cat>
+	<KET subcat>	= <KTUJUAN_4 cat>
+	<KET subcat>	= <KTUJUAN_5 cat>
+	<KET subcat>	= <KTUJUAN_6 cat>
+	<KET subcat>	= <KCARA_1 cat>
+	<KET subcat>	= <KCARA_2 cat>
+	<KET subcat>	= <KCARA_3 cat>
+	<KET subcat>	= <KCARA_4 cat>
+	<KET subcat>	= <KSERTA cat>
+	<KET subcat>	= <KBANDING_1 cat>
+	<KET subcat>	= <KBANDING_2 cat>
+	<KET subcat>	= <KBANDING_3 cat>
+	<KET subcat>	= <KBANDING_4 cat>
+	<KET subcat>	= <KBANDING_5 cat>
+	<KET subcat>	= <KBANDING_6 cat>
+	<KET subcat>	= <KSEBAB_1 cat>
+	<KET subcat>	= <KSEBAB_2 cat>
+	<KET subcat>	= <KSEBAB_3 cat>
+	<KET subcat>	= <KSALING cat>
+	<KET subcat>	= <KSYARAT_1 cat>
+	<KET subcat>	= <KSYARAT_2 cat>
+	<KET subcat>	= <KSYARAT_3 cat>
+	<KET subcat>	= <KKAL cat>
+	<KET subcat>	= <KIHWAL cat>
+	<KET subcat>	= <KSUMBER cat>
+	<KET subcat>	= <KANDAI cat>
+	<KET subcat>	= <KHASIL cat>
+	<KET subcat>	= <KKONSESIF cat>
+	<KET subcat>	= <KANDAI cat>
+
+Rule KKAL	-> Adv	
+	<Adv subcat> 	= keterangan
+
+Rule KSUMBER		-> Prep {FN_1 / FN_2 / FN_3/ FPRON}
+	<Prep subcat>    = sumber
+	<FN_1 subcat>    = orang
+	<FN_2 subcat>    = benda
+	<FN_3 subcat>    = istilah
+	<FPRON subcat>   = orang
+	<KSUMBER subcat> = <FN_1 cat>
+	<KSUMBER subcat> = <FN_2 cat>
+	<KSUMBER subcat> = <FN_3 cat>
+	<KSUMBER subcat> = <FPRON cat>
+
+Rule KTEMPAT	-> Prep (KKORD Prep_1) {FN_1/FN_2/FN_3/FN_4/FN_5/FN_6/FPRON}
+	<Prep subcat> = tempat
+	<Prep_1 subcat> = tempat
+	<FN_1 subcat> = tempat
+	<FN_2 subcat> = benda
+	<FN_3 subcat> = istilah
+	<FN_4 subcat> = orang
+	<FN_5 subcat> = profesi
+	<FN_6 subcat>    = milik
+	<KTEMPAT subcat> = <FN_1 cat>
+	<KTEMPAT subcat> = <FN_2 cat>
+	<KTEMPAT subcat> = <FN_3 cat>
+	<KTEMPAT subcat> = <FN_4 cat>
+	<KTEMPAT subcat> = <FN_5 cat>
+	<KTEMPAT subcat> = <FN_6 cat>	
+	<KTEMPAT subcat> = <FPRON cat>
+
+Rule KWAKTU		-> (Adv Prep/Prep) {FNWAKTU / FNUM {NATR_1 / NATR_2 / NATR_3} /  
+			 		FNUM_1 / FNUM_1 {NATR_1 / NATR_2 / NATR_3}} /
+		   		Prep {FVOBJKET/KTEMPAT/FPRON} /
+				Ksub KLAUSA
+	<Adv subcat>    = aspek
+	<Prep subcat>   = waktu
+	<Ksub subcat>   = waktu
+	<NATR_1 subcat> = tempat
+	<NATR_2 subcat> = istilah
+	<NATR_3 subcat> = profesi
+	<FNUM subcat>   = pokok
+	<FNUM_1 subcat> = GOLATR
+	<FPRON subcat>  = tunjuk
+	<KWAKTU subcat> = <FNWAKTU cat>
+	<KWAKTU subcat> = <FNUM cat>
+	<KWAKTU subcat> = <FNUM_1 cat>
+	<KWAKTU subcat> = <FVOBJKET cat>
+	<KWAKTU subcat> = <KTEMPAT cat>
+	<KWAKTU subcat> = <FPRON cat>
+	<KWAKTU subcat> = <KLAUSA cat>
+
+Rule KALAT	-> Prep {FN_1/FN_2}/
+		   Ksub KLAUSA
+	<Prep subcat>	= alat
+	<Ksub subcat>	= alat
+	<FN_1 subcat>	= benda
+	<FN_2 subcat>	= istilah
+	<KALAT subcat> = <FN_1 cat>
+	<KALAT subcat> = <FN_2 cat>
+	<KALAT subcat> = <KLAUSA cat>
+
+Rule KTUJUAN	-> Prep {FN_1/FN_2/FN_3/FN_4/FN_5/FN_6/FN_7/FN_8/FPRON/FVOBJKET/FADJ/FNUM}/
+                   Ksub KLAUSA
+	<Prep subcat> 	= tujuan
+	<Ksub subcat> 	= tujuan
+	<FN_1 subcat>	= orang
+	<FN_2 subcat>	= profesi
+	<FN_3 subcat>	= istilah
+	<FN_4 subcat>	= FPRON
+	<FN_5 subcat>	= tempat
+	<FN_6 subcat>	= FADJ
+	<FN_7 subcat>	= benda
+	<FN_8 subcat>	= milik
+	<FNUM subcat>	= GOLATR
+	<KTUJUAN subcat>  = <FN_1 cat>
+	<KTUJUAN subcat>  = <FN_2 cat>
+	<KTUJUAN subcat>  = <FN_3 cat>
+	<KTUJUAN subcat>  = <FN_4 cat>
+	<KTUJUAN subcat>  = <FN_5 cat>
+	<KTUJUAN subcat>  = <FN_6 cat>
+	<KTUJUAN subcat>  = <FN_7 cat>
+	<KTUJUAN subcat>  = <FN_8 cat>
+	<KTUJUAN subcat>  = <FPRON cat>
+	<KTUJUAN subcat>  = <FVOBJKET cat>
+	<KTUJUAN subcat>  = <FADJ cat>
+	<KTUJUAN subcat>  = <FNUM cat>
+	<KTUJUAN subcat>  = <KLAUSA cat>
+
+Rule KCARA	-> (Adv) Prep {FADJ/FVOBJKET/FN}/	
+		   Ksub KLAUSA
+	<Adv subcat>    = tidak
+	<Prep subcat> 	= cara
+	<Ksub subcat> 	= cara
+	<FN subcat>	= FADJ
+	<KCARA subcat>  = <FADJ cat>
+	<KCARA subcat>  = <FVOBJKET cat>
+	<KCARA subcat>  = <FN cat>
+	<KCARA subcat>  = <KLAUSA cat>
+
+Rule KSERTA	-> Prep {FN_1/FN_2/FN_3/FN_4}
+	<Prep subcat> = serta
+	<FN_1 subcat>	= orang
+	<FN_2 subcat>	= profesi
+	<FN_3 subcat>	= tempat
+	<FN_4 subcat>	= milik
+	<KSERTA subcat> = <KSERTA cat>
+
+Rule KBANDING	-> Prep {FN / FNUM / FNUM_1 / FPRON / KTEMPAT / FVOBJKET}/
+		   Ksub KLAUSA
+	<Prep subcat> = pembandingan
+	<Ksub subcat> = pembandingan
+	<FNUM subcat>     = pokok
+	<FNUM_1 subcat>   = GOLATR
+	<FPRON subcat>    = tunjuk
+	<KBANDING subcat> = <FN cat>
+	<KBANDING subcat> = <FNUM cat>
+	<KBANDING subcat> = <FNUM_1 cat>
+	<KBANDING subcat> = <FPRON cat>
+	<KBANDING subcat> = <KTEMPAT cat>
+	<KBANDING subcat> = <FVOBJKET cat>
+	<KBANDING subcat> = <KLAUSA cat>
+
+Rule KSEBAB	-> Prep {FN/FVOBJKET}/
+		   Ksub KLAUSA
+	<Prep subcat> = sebab
+	<Ksub subcat> = sebab
+	<KSEBAB subcat> = <FN cat>
+	<KSEBAB subcat> = <FVOBJKET cat>
+	<KSEBAB subcat> = <KLAUSA cat>
+
+
+Rule KSALING	-> Prep Vtran
+	<Prep subcat> = saling
+	<Vtran subcat> = ekatransitif
+	<KSALING subcat> = <KSALING cat>
+
+Rule KSYARAT	-> Prep {FN/FVOBJKET}
+		   / Ksub KLAUSA
+	<Prep subcat> = syarat
+	<Ksub subcat> = syarat
+	<FN subcat>   = istilah
+	<KSYARAT subcat> = <FN cat>
+	<KSYARAT subcat> = <FVOBJKET cat>
+	<KSYARAT subcat> = <KLAUSA cat>
+	
+Rule KIHWAL	-> Prep FN
+	<Prep subcat> = ihwal
+	<KIHWAL subcat> = <FN cat>
+
+Rule KANDAI	-> Ksub KLAUSA
+	<Ksub subcat> = andai
+	<KANDAI subcat> = <KLAUSA cat>
+
+Rule KKONSESIF	-> Ksub KLAUSA
+	<Ksub subcat> = konsesif
+	<KKONSESIF subcat> = <KLAUSA cat>	
+
+Rule KHASIL	-> Ksub KLAUSA
+	<Ksub subcat> = hasil
+	<KHASIL subcat> = <KLAUSA cat>	
+	
+Rule FNUM	-> { (WDEPANFN/WDEPAN) Num /
+		      {NUMATR_1/NUMATR_2} GOLATR Num_3 (Num_4) (FPRON) /
+		      GOLATR Num_3 (Num_4) (FPRON) /
+		     (WDEPAN) {NUMATR_1/NUMATR_2} GOLATR (FPRON) (WBELAKANG)
+		   } (Kkord_3 {FNUM_2} Kkord_4)
+		   (KKORD_1 FNUM_1)
+	<Kkord_3 subcat> = buka
+	<Kkord_4 subcat> = tutup
+	<Num_3 subcat>  = tingkat
+	<Num_4 subcat>  = tingkat
+	<NUMATR_1 subcat> = biasa
+	<NUMATR_2 subcat> = pokok
+	<FPRON subcat>  = tunjuk
+	<KKORD_1 subcat>  = biasa
+	<FNUM subcat>   = <Num subcat>
+	<FNUM subcat>   = <GOLATR cat>
+	<FNUM_1 subcat> = <FNUM subcat>
+
+Rule GOLATR	-> Gol ((Kkord) Gol_1)
+	<Kkord subcat> = garing
+
+Rule NUMATR	-> {Num_1/Num_2} ((KKORD/Prep) NUMATR_1)
+	<Num_1 subcat>	= pokok
+	<Num_2 subcat>	= biasa
+	<Prep subcat>	= waktu
+	<NUMATR subcat>   = <Num_1 subcat>
+	<NUMATR subcat>   = <Num_2 subcat>
+
+Rule NMINORG	-> N_1/N_2/N_3/N_4
+	<N_1 subcat> = tempat
+	<N_2 subcat> = benda
+	<N_3 subcat> = profesi
+	<N_4 subcat> = istilah
+	<NMINORG subcat>	= <N_1 subcat>
+	<NMINORG subcat>	= <N_2 subcat>
+	<NMINORG subcat>	= <N_3 subcat>
+	<NMINORG subcat>	= <N_4 subcat>
+
+
+Rule FN	-> (WDEPANFN)
+	   {
+	     {NMINORG_4/N} {WBLKGFN_1/WBLKGFN_9/WBLKGFN_6}
+	   /
+	     NMINORG_5 Vintr
+	   /
+	     {NMINORG_1/N_1} {WBLKGFN_2}
+	   /
+	     NMINORG_2 WBLKGFN_3
+	   /
+	     {NMINORG}
+	     {WBLKGFN_4/WBLKGFN_7/WBLKGFN_8/WBLKGFN_10}
+	   /
+	     NMINORG_6 WBLKGFN_5
+	   /
+	     NMINORG_3 (Adv)
+	   /
+	     {N_2/N_3/{N_4 N_5}} (Kkord_3 {WBLKGFN_3/WBLKGFN_5/WBLKGFN_81} Kkord_4)
+	   } ( N_8 (Kkord_1 {WBLKGFN_31/WBLKGFN_91} Kkord_2) (WBLKGFN_11) / Kkord_1 N_8 Kkord_2 )
+	   (Part)
+	   ( {(KKORD_1) PENJELAS}/{KKORD_2 FN_1} )  
+	   / Kkord_1 FN_2 Kkord_2
+	<Vintr subcat>		= tberpelengkap	
+	<Adv subcat>		= belakang
+	<Kkord_1 subcat>	= buka
+	<Kkord_2 subcat>	= tutup
+	<Kkord_3 subcat>	= buka
+	<Kkord_4 subcat>	= tutup
+	<N subcat> 		= orang
+	<N_1 subcat>		= orang
+	<N_2 subcat>		= orang
+	<N_3 subcat>		= milik
+	<N_4 subcat>		= milik
+	<N_5 subcat>		= orang
+	<N_6 subcat>		= orang
+	<N_7 subcat>		= waktu	
+	<N_8 subcat>		= orang		
+	<WBLKGFN_1 subcat>	= FPRON
+	<WBLKGFN_11 subcat>	= FPRON
+	<WBLKGFN_2 subcat>	= ADJATR
+	<WBLKGFN_3 subcat>	= FNUM
+	<WBLKGFN_31 subcat>	= FNUM
+	<WBLKGFN_4 subcat>	= waktu
+	<WBLKGFN_5 subcat>	= tempat
+	<WBLKGFN_6 subcat>	= orang
+	<WBLKGFN_7 subcat>	= benda
+	<WBLKGFN_8 subcat>	= profesi
+	<WBLKGFN_81 subcat>	= profesi
+	<WBLKGFN_9 subcat>	= istilah
+	<WBLKGFN_91 subcat>	= istilah
+	<WBLKGFN_10 subcat>	= milik
+	<FN subcat>		= <NMINORG_4 subcat>
+	<FN subcat>		= <N subcat>
+	<FN subcat>		= <NMINORG_5 subcat>
+	<FN subcat>		= <NMINORG_1 subcat>
+	<FN subcat>		= <N_1 subcat>
+	<FN subcat>		= <NMINORG_2 subcat>
+	<FN subcat>		= <WBLKGFN_4 subcat>
+	<FN subcat>		= <WBLKGFN_7 subcat>
+	<FN subcat>		= <WBLKGFN_8 subcat>
+	<FN subcat>		= <WBLKGFN_10 subcat>
+	<FN subcat>		= <NMINORG_6 subcat>
+	<FN subcat>		= <NMINORG_3 subcat>
+	<FN subcat>		= <N_2 subcat>
+	<FN subcat>		= <N_3 subcat>
+	<FN subcat>		= <N_5 subcat>
+	<FN_2 subcat>		= <FN subcat>
+	
+Rule FNWAKTU -> (WDEPANFN) N_7 (WBLKGFN) (WBELAKANG) ((KKORD_1) PENJELAS)
+		/ Kkord_1 FNWAKTU_1 (Kkord FNWAKTU_2) Kkord_2
+	<Kkord_1 subcat> = buka
+	<Kkord_2 subcat> = tutup
+	<N_7 subcat>	 = waktu
+
+
+Rule FNSUBJ	-> 
+	   {(WDEPANFN)
+	   {
+	     {NMINORG/N} WBLKGFN_1
+	   /
+	     NMINORG_5 Vintr
+	   /
+	     {NMINORG_1/N_1} WBLKGFN_2
+	   /
+	     {NMINORG_2/N_6} WBLKGFN_3
+	   /
+	     {NMINORG}
+	     {WBLKGFN_4/WBLKGFN_6/WBLKGFN_7/WBLKGFN_8/WBLKGFN_9/WBLKGFN_10}
+	   /
+	     NMINORG_6 WBLKGFN_5
+	   /
+	     NMINORG_3 (Adv)
+	   /
+	     {N_2/N_3/{N_4 N_5}}
+	   } (N_7 / Kkord_1 N_7 Kkord_2 )
+	   (Part)
+	   ((KKORD_1) PENJELAS)}
+	   (KKORD_2 FNSUBJ_1)
+	<Vintr subcat>		= tberpelengkap	
+	<Adv subcat>		= belakang
+	<N subcat> 		= orang
+	<N_1 subcat>		= orang
+	<N_2 subcat>		= orang
+	<N_3 subcat>		= milik
+	<N_4 subcat>		= milik
+	<N_5 subcat>		= orang
+	<N_6 subcat>		= orang
+	<N_7 subcat>		= orang	
+	<WBLKGFN_1 subcat>	= FPRON
+	<WBLKGFN_2 subcat>	= ADJATR
+	<WBLKGFN_3 subcat>	= FNUM
+	<WBLKGFN_4 subcat>	= waktu
+	<WBLKGFN_5 subcat>	= tempat
+	<WBLKGFN_6 subcat>	= orang
+	<WBLKGFN_7 subcat>	= benda
+	<WBLKGFN_8 subcat>	= profesi
+	<WBLKGFN_9 subcat>	= istilah
+	<WBLKGFN_10 subcat>	= milik
+	<WBLKGFN_11 subcat>	= Vintr
+	<FNSUBJ subcat>		= <WBLKGFN_1 subcat> 
+	<FNSUBJ subcat>		= <NMINORG_5 subcat>
+	<FNSUBJ subcat>		= <NMINORG_1 subcat>
+	<FNSUBJ subcat>		= <N_1 subcat>
+	<FNSUBJ subcat>		= <NMINORG_2 subcat>
+	<FNSUBJ subcat>		= <WBLKGFN_4 subcat>
+	<FNSUBJ subcat>		= <WBLKGFN_6 subcat>
+	<FNSUBJ subcat>		= <WBLKGFN_7 subcat>
+	<FNSUBJ subcat>		= <WBLKGFN_8 subcat>
+	<FNSUBJ subcat>		= <WBLKGFN_9 subcat>
+	<FNSUBJ subcat>		= <WBLKGFN_10 subcat>
+	<FNSUBJ subcat>		= <NMINORG_6 subcat>	
+	<FNSUBJ subcat>		= <NMINORG_3 subcat>
+	<FNSUBJ subcat>		= <N_2 subcat>
+	<FNSUBJ subcat>		= <N_3 subcat>
+	<FNSUBJ subcat>		= <N_5 subcat>
+	<FNSUBJ subcat>		<= <FNSUBJ_1 subcat>
+	<FNSUBJ subcat>		<= <PENJELAS subcat>
+
+
+Rule WDEPANFN	-> FNUM_1/FNUM_2/FNUM_3/Art
+	<FNUM_1 subcat>	= GOLATR
+	<FNUM_2 subcat>	= biasa
+	<FNUM_3 subcat>	= pokok
+
+
+Rule WBLKGFN	-> (Art/Prep/Num)
+		   {
+		     FPRON / FNUM_1 / NATR_1 / ADJATR_1 
+		   } (WBLKGFN_1) 
+		   / Kkord_1 {WBLKGFN_2/FNUM_2/FNUM_3} Kkord_2 (WBLKGFN_3)
+	<Kkord_1 subcat>	= buka
+	<Kkord_2 subcat>	= tutup
+	<Prep subcat>		= antara
+	<Num subcat>		= biasa
+	<FNUM_1 subcat>		= tingkat
+	<FNUM_2 subcat>		= pokok
+	<FNUM_3 subcat>		= GOLATR
+	<WBLKGFN subcat>	= <FPRON cat>
+	<WBLKGFN subcat>	= <FNUM_1 cat>
+	<WBLKGFN subcat>	= <FNUM_2 subcat>
+	<WBLKGFN subcat>	= <FNUM_3 subcat>
+	<WBLKGFN subcat>	= <ADJATR_1 cat>
+	<WBLKGFN subcat>	= <NATR_1 subcat>
+	<WBLKGFN_2 subcat>	= <WBLKGFN subcat>
+
+
+Rule PENJELAS	-> {
+		   {Prep_1 (KET) (Prep_3)
+		    {
+		     FVPEL/
+		     PRED_6/PRED_7 (FPRON)/
+		     PRED_8 PEL_4/
+		     PRED_9/PRED_10/
+		     PENGURAI
+		    }
+		   }
+		 /
+		   PENGURAI
+		 /
+		   {(Prep_1) Prep_2 FN}
+		 /
+		   {Ksub {KLAUSA_1 / KLAUSA_2}}
+		   }
+		   (KKORD_1 PENJELAS_1)		
+	<Prep_1 subcat> = atributif1
+	<Prep_2 subcat> = atributif2
+	<Prep_3 subcat> = waktu
+	<Ksub subcat> 	= atributif
+	<PRED_6 subcat>	  = FNUM
+	<PRED_7 subcat>   = warna
+	<PRED_8 subcat>   = bandingan
+	<PRED_9 subcat>	  = biasa
+	<PRED_10 subcat>  = profesi
+	<PEL_4 subcat>	  = PELADJ
+	<FPRON subcat>	  = tunjuk
+	<KLAUSA_1 subcat> = KLAKTIF
+	<KLAUSA_2 subcat> = KLPASIF
+	<PENJELAS subcat> = <PRED_6 subcat>
+	<PENJELAS subcat> = <PRED_7 subcat>
+	<PENJELAS subcat> = <PRED_8 subcat>
+	<PENJELAS subcat> = <PRED_9 subcat>
+	<PENJELAS subcat> = <PRED_10 subcat>
+	<PENJELAS subcat> = <FVPEL subcat>
+
+
+Rule PENGURAI	-> Prep {FN/FADJ/FVPEL/FNUM/FPRON/KET}
+		   (KKORD PENGURAI_1)
+	<Prep subcat> = urai
+	<PENGURAI subcat> = <FN cat>
+	<PENGURAI subcat> = <FADJ cat>
+	<PENGURAI subcat> = <FVPEL cat>
+	<PENGURAI subcat> = <FNUM cat>
+	<PENGURAI subcat> = <FPRON cat>
+	<PENGURAI subcat> = <KET cat>
+	<PENGURAI_1 subcat> = <PENGURAI subcat>
+		
+Rule NATR	-> {NMINORG/N}
+	<N subcat>	   = milik
+	<NATR subcat>	= <N subcat>		
+	<NATR subcat>	= <NMINORG subcat>
+

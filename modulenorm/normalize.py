@@ -96,6 +96,22 @@ class Normalize():
         text = re.sub(r'^(RT|FAV)','', text)
         return text
 
+    def wordcNormalize(self, text, loop=2):
+        for a in range(loop):
+            checkw = False
+            for i in range(len(text)):
+                if text[i] == '-':
+                    if text[i-1] == text[i+1]:
+                        katalengkap = text[i-1]+text[i]+text[i+1]
+                        pb = i-1
+                        checkw = True
+            if checkw:
+                del text[pb]
+                del text[pb]
+                del text[pb]
+                text.insert(pb, katalengkap)
+        return text
+
     def generate_options(self, prefix_proba, prefix, suffix,
                      lang_model, missed_model, optimism=0.5, cache=None):
         """ Generate partial options of abbreviation decoding (a helper function)
