@@ -1,6 +1,8 @@
 from collections import Counter
 from collections import defaultdict
 import random
+import numpy as np
+
 
 class LdaModel:
     """
@@ -49,7 +51,18 @@ class LdaModel:
         # a list of pwz
         keys = distinct_words
         topics = [k for k in range(self.K)]
-        self.pwz_counts = {key: {key: 0 for key in topics} for key in keys}
+        self.pwz_counts = {key: {key: 0 for key in topics} for key in sorted(list(keys))}
+
+        # a list of pzd
+        documents = [d for d in range(self.D)]
+        self.pzd_counts = {key: {key: 0 for key in topics} for key in documents}
+
+        # a list of word frequency
+        self.word_frequencies = {key: {key: 0 for key in documents} for key in sorted(list(keys))}
+
+        for idx, doc in enumerate(self.documents):
+            for word in distinct_words:
+                self.word_frequencies[word][idx] = self.word_frequencies[word][idx] + doc.count(word)
 
         for d in range(self.D):
             for word, topic, in zip(self.documents[d], self.document_topics[d]):
@@ -58,7 +71,10 @@ class LdaModel:
                 self.topic_counts[topic] += 1
 
         # Gibbs Sampling
+        # list_perplexity = [0 for x in range(self.iteration)]
+        # print(self.W)
         for iter in range(self.iteration):
+            # print(iter)
             for d in range(self.D):
                 for i, (word, topic) in enumerate(zip(self.documents[d],
                                                       self.document_topics[d])):
@@ -80,11 +96,66 @@ class LdaModel:
                     self.topic_counts[new_topic] += 1
                     self.document_lengths[d] += 1
 
+                    # pwz = self.p_word_given_topic(word, topic, self.beta)
+                    # pzd = self.p_topic_given_document(topic, d, self.alpha)
+                    # # print("topic", topic, "d", d, "pzd", self.p_topic_given_document(topic, d, self.alpha))
+                    # self.pwz_counts[word][topic] = pwz
+                    # self.pzd_counts[d][topic] = pzd
+
+            # list_perplexity[iter] = self.perplexity()
+            # print(self.perplexity())
+            # if iter > 250:
+            #     if list_perplexity[iter] - list_perplexity[iter-1] < 0.001:
+            #         break
+
         # get word with pwz
         for d in range(self.D):
             for i, (word, topic) in enumerate(zip(self.documents[d], self.document_topics[d])):
                 pwz = self.p_word_given_topic(word, topic, self.beta)
+                pzd = self.p_topic_given_document(topic, d, self.alpha)
+                # print("topic", topic, "d", d, "pzd", self.p_topic_given_document(topic, d, self.alpha))
                 self.pwz_counts[word][topic] = pwz
+                self.pzd_counts[d][topic] = pzd
+
+        # print(self.word_frequencies)
+        # print()
+        # print(self.pwz_counts)
+        # print()
+        # print(self.pzd_counts)
+        # print()
+        # print(self.document_topic_counts)
+
+    def perplexity(self):
+        # kata frequency
+        nkata_list = []
+        for i in range(len(self.word_frequencies)):
+            result = list(list(self.word_frequencies.values())[i].values())
+            nkata_list.append(result)
+        nkata_arr = np.array(nkata_list)
+
+        # pwz
+        pwz_list = []
+        for i in range(len(self.pwz_counts)):
+            result = result = list(list(self.pwz_counts.values())[i].values())
+            pwz_list.append(result)
+        pwz_arr = np.array(pwz_list)
+
+        # pzd
+        pzd_list = []
+        for i in range(len(self.pzd_counts)):
+            result = list(list(self.pzd_counts.values())[i].values())
+            pzd_list.append(result)
+        pzd_arr = np.transpose(np.array(pzd_list))
+
+        # perplexity
+        s = np.matmul(pwz_arr, pzd_arr)
+        log_s = np.log10(s, out=np.zeros_like(s), where=(s!=0))
+        p_log_s = np.multiply(nkata_arr, log_s)
+        sum_p = np.sum(nkata_arr)
+        sum_p_log_s = np.sum(p_log_s)
+        perplexity = np.exp(-(sum_p_log_s/sum_p))
+
+        return perplexity
 
     def p_topic_given_document(self, topic, d, alpha):
         """the fraction of words in document _d_
@@ -125,6 +196,7 @@ class LdaModel:
         return self.pwz_counts[word]
 
     def get_topic_word_pwz(self, documents_tagged):
+        """return list contains topic, word with tag, and probability word given topic (pwz)"""
         # split the document by space
         documents_tagged_splitted = []
         for t in documents_tagged:
@@ -134,8 +206,10 @@ class LdaModel:
 
         result = []
         for k, word_counts in enumerate(self.topic_word_counts):
+            total = 0
             for word, count in word_counts.most_common():
                 if count > 0:
+                    if total >= 20: break
                     temp = []
                     for word_tagged in distinct_words_tagged:
                         if word == word_tagged.split('/')[0]:
@@ -144,8 +218,10 @@ class LdaModel:
                     if len(temp) > 1:
                         for t in temp:
                             result.append([k, t, self.get_pwz(word)[k]])
+                            total += 1
                     else:
                         result.append([k, ''.join(temp), self.get_pwz(word)[k]])
+                        total += 1
         return result
 
     def print_topics(self):

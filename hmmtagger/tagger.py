@@ -2,6 +2,7 @@ from .ngram import *
 from .prob import *
 import math
 from copy import copy
+import os
 
 class Sequence:
     """
@@ -632,8 +633,8 @@ class MainTagger:
             self.model = Model(open(self.fileLexicon, "r"), open(self.fileNGram, "r"))
             self.dl = None
             if self.useLexicon != 0:
-                self.dl = DicLexicon("resource/ilex.txt", "resource/cattable.txt", self.model.getNumberTags())
-
+                self.dl = DicLexicon("./resource/inlex.txt", "./resource/cattable.txt", self.model.getNumberTags())
+                # print(os.stat("./resource/inlx.txt").st_size) # check if training file loaded correctly
         except:
             print("Training file doesn't exist !\n")
             return

@@ -1,0 +1,8 @@
+S -> NP VP
+NP -> Det N | NP PP
+PP -> P NP
+VP -> V NP | VP PP
+Det -> 'the' | 'a'
+N -> 'cat' | 'dog'
+V -> 'chased' | 'sat'
+P -> 'in' | 'on'
